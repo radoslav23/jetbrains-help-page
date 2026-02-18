@@ -4,39 +4,38 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 import java.time.Duration;
 
-public class SeleniumDocsPage {
-    WebDriver driver;
-    WebDriverWait wait;
-    JavascriptExecutor js;
+public class SeleniumDocsPage extends BasePage {
+    //WebDriver driver;
+    //WebDriverWait wait;
+    //JavascriptExecutor js;
 //These fields define the tools my page object uses to interact with the browser. driver is the main controller,
 // wait helps synchronize actions with page state, and js allows direct JavaScript execution for advanced control
 
-    By acceptAllButton = By.xpath("//div[@id='ch2-dialog']//button[.='Accept All']");
-    By testingLink = By.xpath("//a[normalize-space()='Testing']");
-    By seleniumHeader = By.xpath("//h3[normalize-space()='Selenium']");
-    By addElementHeading = By.xpath("//span[normalize-space()='Add elements to code']");
-    By jUnitLink = By.xpath("//h3[normalize-space()='JUnit']");
-    By getStartedJUnit = By.xpath("//span[contains(text(),'Get started with JUnit')]");
-    By searchIcon = By.xpath("//button[@title='Search']//*[name()='svg']");
-    By searchField = By.xpath("//input[@placeholder='Ctrl+K for advanced search']");
-    By searchResult = By.partialLinkText("Debug tool window");
-    By debugToolHeading = By.cssSelector("h1#Debug_Tool_Window\\.topic > .title__content");
+    private By acceptAllButton = By.xpath("//div[@id='ch2-dialog']//button[.='Accept All']");
+    private By testingLink = By.xpath("//a[normalize-space()='Testing']");
+    private By seleniumHeader = By.xpath("//h3[normalize-space()='Selenium']");
+    private By addElementHeading = By.xpath("//span[normalize-space()='Add elements to code']");
+    private By jUnitLink = By.xpath("//h3[normalize-space()='JUnit']");
+    private By getStartedJUnit = By.xpath("//span[contains(text(),'Get started with JUnit')]");
+    private By searchIcon = By.xpath("//button[@title='Search']//*[name()='svg']");
+    private By searchField = By.xpath("//input[@placeholder='Ctrl+K for advanced search']");
+    private By searchResult = By.partialLinkText("Debug tool window");
+    private By debugToolHeading = By.cssSelector("h1#Debug_Tool_Window\\.topic > .title__content");
+    private By aiSection = By.xpath("/html//div[@id='webhelp-root']/div/div[2]/nav//ul//a[@href='ai.html']");
+    private By yesButton = By.xpath("/html//div[@id='webhelp-root']/div/div[2]/div//article//div[@class='wt-col-inline']/button[1]");
+    private By wasPageHelpful = By.xpath("/html//div[@id='webhelp-root']/div/div[2]//article//div[.='Was this page helpful?']");
+    private By thanksForFeedback = By.xpath("//p[@class='feedback__text']");
+    //private By noButton = By.xpath("/html//div[@id='webhelp-root']/div/div[2]/div//article//div[@class='wt-col-inline']/button[2]");
+    private By feedbackForm = By.xpath("//body[@class='app-is-rendered']/div[2]/div");
+    private By howToImproveHeading = By.xpath("/html/body[@class='app-is-rendered']//form//legend[@class='feedback__legend']");
+    
 //here locators are defined
 
     public SeleniumDocsPage(WebDriver driver) {
-//This constructor initializes the page object with the tools it needs to interact with the browser
-//The constructor sets up the browser control, wait mechanism, and JavaScript execution capability.
-//It ensures the page object is ready to interact with the web page reliably and flexibly
-        this.driver = driver;
-        //Stores the passed-in WebDriver instance so the class can use it to control the browser
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(2));
-        //Sets up an explicit wait with a 2-second timeout. This helps synchronize actions with dynamic page content
-        this.js = (JavascriptExecutor) driver;
-        //Casts the WebDriver to a JavascriptExecutor so you can run JavaScript commands when needed
+        super(driver);
     }
     //below are methods with page interactions are defined. First one performs a single action:
     // clicking the "Accept All" button in a cookie consent dialog
@@ -62,10 +61,10 @@ public class SeleniumDocsPage {
         element.click();
     }
 
-    public void verifyAddElementsText() {
+    public String verifyAddElementsText() {
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(addElementHeading));
         js.executeScript("arguments[0].scrollIntoView(true);", element);
-        Assert.assertEquals(element.getText(), "Add elements to code");
+        return element.getText();
     }
 
     public void clickJUnit() {
@@ -74,9 +73,9 @@ public class SeleniumDocsPage {
         element.click();
     }
 
-    public void verifyJUnitText() {
+    public String verifyJUnitText() {
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(getStartedJUnit));
-        Assert.assertEquals(element.getText(), "Get started with JUnit");
+        return element.getText();
     }
 
     public void clickSearchIcon() {
@@ -94,8 +93,29 @@ public class SeleniumDocsPage {
         element.click();
     }
 
-    public void verifyDebugToolText() {
+    public String verifyDebugToolText() {
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(debugToolHeading));
-        Assert.assertEquals(element.getText(), "Debug tool window");
+        return element.getText();
+    }
+
+    public void clickAiSection() {
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(aiSection));
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
+        element.click();
+    }
+
+    public String verifyWasPageHelpfulHeading(){
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(wasPageHelpful));
+        return element.getText();
+    }
+
+    public void voteWithYes(){
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(yesButton));
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
+        element.click();
+    }
+    public String verifyVotedYes(){
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(thanksForFeedback));
+        return element.getText();
     }
 }
