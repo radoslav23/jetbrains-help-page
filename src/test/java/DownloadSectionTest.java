@@ -64,5 +64,7 @@ public class DownloadSectionTest {
         page.clickLinuxButton();
         Assert.assertTrue(page.linuxDownloadButtonVisible());
         page.linuxDownloadButtonClick();
+        Assert.assertTrue(page.tarLinuxVisibility());
+        Assert.assertTrue(page.tarLinuxArm64Visibility());
     }
 }

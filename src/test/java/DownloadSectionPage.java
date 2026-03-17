@@ -23,8 +23,8 @@ public class DownloadSectionPage extends BasePage {
     private By dmgAppleSilicon = By.linkText(".dmg (Apple Silicon)");
     private By dmgIntel = By.linkText(".dmg (Intel)");
     private By linuxDownloadButton = By.xpath("//*[@id=\"download-block\"]/section[2]/div/div/div[1]/div[2]/div[3]/div/div/div/span/button");
-    private By tarLinux = By.linkText(".tar.gz (Linux)");
-    private By tarLinuxArm64 = By.linkText(".tar.gz (Linux ARM 64)");
+    private By tarLinux = By.xpath("//span[normalize-space()='.tar.gz (Linux)']");
+    private By tarLinuxArm64 = By.xpath("//span[normalize-space()='.tar.gz (Linux ARM64)']");
 
     //below methods for interactions with the page are defined
     public void clickGetIntellijIdeaButton() {
@@ -110,5 +110,15 @@ public class DownloadSectionPage extends BasePage {
     public void linuxDownloadButtonClick(){
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(linuxDownloadButton));
         element.click();
+    }
+
+    public boolean tarLinuxVisibility(){
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(tarLinux));
+        return element.isDisplayed();
+    }
+
+    public boolean tarLinuxArm64Visibility(){
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(tarLinuxArm64));
+        return element.isDisplayed();
     }
 }
