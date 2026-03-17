@@ -6,13 +6,13 @@ import org.testng.annotations.*;
 
 import java.net.MalformedURLException;
 
-public class SeleniumDocsTest {
+public class SeleniumDocsTest{
     WebDriver driver;
     SeleniumDocsPage page;
 
-    private static final String baseUrl = "https://www.jetbrains.com/help/idea/ai-assistant-in-jetbrains-ides.html";
+    private static final String baseUrl = "https://www.jetbrains.com/help/idea/getting-started.html";
     @BeforeTest
-    public void setUp() {
+    public void initPage() {
         driver = new ChromeDriver();
         page = new SeleniumDocsPage(driver);
         driver.get(baseUrl);
@@ -60,7 +60,4 @@ public class SeleniumDocsTest {
         page.voteWithYes();
         Assert.assertEquals(page.verifyVotedYes(), "Thanks for your feedback!");
     }
-
-
-
 }

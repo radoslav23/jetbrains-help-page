@@ -1,33 +1,17 @@
-//package org.example.seleniumExample;
-
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import javax.swing.text.html.HTML;
-import java.time.Duration;
 import java.util.List;
 
 public class SeleniumDocsPageNegative extends BasePage {
 
-    WebDriver driver;
-    WebDriverWait wait;
-    JavascriptExecutor js;
+    public SeleniumDocsPageNegative(WebDriver driver) {super(driver);}
 
-    public SeleniumDocsPageNegative(WebDriver driver) {
-        super(driver);
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        this.js = (JavascriptExecutor) driver;
-    }
-
-    // Locators (as methods or constants)
+    //below locators are defined
     private By searchBox = By.name("q");
     private By ghostElement = By.id("nonExistentElement");
     private By slowElement = By.id("slowElement");
     private By cookieBanner = By.id("cookie-banner");
     private By searchField = By.xpath("//input[@placeholder='Ctrl+K for advanced search']");
-    private By acceptAllButton = By.xpath("//div[@id='ch2-dialog']//button[.='Accept All']");
     private By noSearchResults = By.xpath("//h3[@class='quick-search__no-results-text']");
     private By noButton = By.xpath("/html//div[@id='webhelp-root']/div/div[2]/div//article//div[@class='wt-col-inline']/button[2]");
     private By feedbackForm = By.cssSelector("div[data-test='feedback-popup']");
@@ -37,7 +21,7 @@ public class SeleniumDocsPageNegative extends BasePage {
     private By emailField = By.xpath("//input[@placeholder='Email address']");
     private By submitButton = By.cssSelector("button[data-test='feedback-send']");
 
-    // Actions
+    //below methods for interactions with the page are defined
     public void goToBrokenLink() {
         driver.get("https://www.jetbrains.com/help/idea/non-existent-page.html");
     }
@@ -142,7 +126,7 @@ public class SeleniumDocsPageNegative extends BasePage {
 
     public void typeFeedback(){
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(textField));
-        element.sendKeys("I'm happy");
+        element.sendKeys("I'm not happy with the site navigation");
     }
 
     public boolean submitButtonEnabled(){
@@ -157,5 +141,15 @@ public class SeleniumDocsPageNegative extends BasePage {
 
     public boolean feedbackFormInvisibility(){
     return wait.until(ExpectedConditions.invisibilityOfElementLocated(feedbackForm));
+    }
+
+    public void typeInvalidEmail(){
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(emailField));
+        element.sendKeys("notValid@gmail.");
+    }
+
+    public boolean isTheEmailInvalid(){
+        wait.until(ExpectedConditions.attributeToBe(emailField, "aria-invalid", "true"));
+        return true;
     }
 }

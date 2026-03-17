@@ -5,14 +5,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-public class SeleniumDocsTestNegative {
+public class SeleniumDocsTestNegative{
 
     WebDriver driver;
     SeleniumDocsPageNegative page;
 
     private static final String baseUrl = "https://www.jetbrains.com/help/idea/ai-assistant-in-jetbrains-ides.html";
-    @BeforeTest
-    public void setup() {
+    @BeforeMethod
+    public void initPage() {
         driver = new ChromeDriver();
         page = new SeleniumDocsPageNegative(driver);
         driver.get(baseUrl);
@@ -22,7 +22,7 @@ public class SeleniumDocsTestNegative {
     @AfterTest
     public void teardown() {
         if (driver != null) {
-            //driver.quit();
+            driver.quit();
         }
     }
 
@@ -81,5 +81,14 @@ public class SeleniumDocsTestNegative {
         Assert.assertTrue(page.submitButtonEnabled());
         page.submitFeedback();
         Assert.assertTrue(page.feedbackFormInvisibility());
+    }
+
+    @Test
+    public void TypeInvalidEmail () {
+        SeleniumDocsPage docsPage = new SeleniumDocsPage(driver);
+        docsPage.acceptCookies();
+        page.voteWithNegative();
+        page.typeInvalidEmail();
+        Assert.assertTrue(page.isTheEmailInvalid());
     }
 }

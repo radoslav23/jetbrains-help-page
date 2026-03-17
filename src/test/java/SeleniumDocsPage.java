@@ -1,19 +1,16 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
+import java.util.List;
 
 public class SeleniumDocsPage extends BasePage {
-    //WebDriver driver;
-    //WebDriverWait wait;
-    //JavascriptExecutor js;
-//These fields define the tools my page object uses to interact with the browser. driver is the main controller,
-// wait helps synchronize actions with page state, and js allows direct JavaScript execution for advanced control
 
+    public SeleniumDocsPage(WebDriver driver) {
+        super(driver);
+    }
+
+    //below locators are defined
     private By acceptAllButton = By.xpath("//div[@id='ch2-dialog']//button[.='Accept All']");
     private By testingLink = By.xpath("//a[normalize-space()='Testing']");
     private By seleniumHeader = By.xpath("//h3[normalize-space()='Selenium']");
@@ -28,26 +25,17 @@ public class SeleniumDocsPage extends BasePage {
     private By yesButton = By.xpath("/html//div[@id='webhelp-root']/div/div[2]/div//article//div[@class='wt-col-inline']/button[1]");
     private By wasPageHelpful = By.xpath("/html//div[@id='webhelp-root']/div/div[2]//article//div[.='Was this page helpful?']");
     private By thanksForFeedback = By.xpath("//p[@class='feedback__text']");
-    //private By noButton = By.xpath("/html//div[@id='webhelp-root']/div/div[2]/div//article//div[@class='wt-col-inline']/button[2]");
-    private By feedbackForm = By.xpath("//body[@class='app-is-rendered']/div[2]/div");
-    private By howToImproveHeading = By.xpath("/html/body[@class='app-is-rendered']//form//legend[@class='feedback__legend']");
-    
-//here locators are defined
 
-    public SeleniumDocsPage(WebDriver driver) {
-        super(driver);
-    }
-    //below are methods with page interactions are defined. First one performs a single action:
-    // clicking the "Accept All" button in a cookie consent dialog
+    //below methods for interactions with the page are defined
     public void acceptCookies() {
-        try {
-            wait.until(ExpectedConditions.elementToBeClickable(acceptAllButton));
+        List<WebElement> buttons = driver.findElements(acceptAllButton);
 
-            driver.findElement(acceptAllButton).click();
-        } catch (Exception e) {
-            // Fallback: try clicking via JavaScript if normal click fails
-            WebElement button = driver.findElement(acceptAllButton);
-            js.executeScript("arguments[0].click();", button);
+        if (!buttons.isEmpty()) {
+            try {
+                buttons.get(0).click();
+            } catch (Exception e) {
+                js.executeScript("arguments[0].click();", buttons.get(0));
+            }
         }
     }
 
@@ -94,7 +82,7 @@ public class SeleniumDocsPage extends BasePage {
     }
 
     public String verifyDebugToolText() {
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(debugToolHeading));
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(debugToolHeading));
         return element.getText();
     }
 
