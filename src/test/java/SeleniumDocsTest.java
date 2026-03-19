@@ -1,25 +1,26 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.net.MalformedURLException;
 
-public class SeleniumDocsTest{
-    WebDriver driver;
+@Listeners(TestListener.class)
+public class SeleniumDocsTest extends BaseTest{
+
     SeleniumDocsPage page;
 
     private static final String baseUrl = "https://www.jetbrains.com/help/idea/getting-started.html";
-    @BeforeTest
+    @BeforeMethod
     public void initPage() {
         driver = new ChromeDriver();
-        page = new SeleniumDocsPage(driver);
         driver.get(baseUrl);
+        driverReady = true;
+        page = new SeleniumDocsPage(driver);
         page.acceptCookies();
     }
 
-    @AfterTest
+    @AfterMethod
     public void teardown() {
         if (driver != null) {
             driver.quit();

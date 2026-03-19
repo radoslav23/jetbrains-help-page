@@ -1,25 +1,23 @@
-//package org.example.seleniumExample;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-public class SeleniumDocsTestNegative{
+@Listeners(TestListener.class)
+public class SeleniumDocsTestNegative extends BaseTest{
 
-    WebDriver driver;
     SeleniumDocsPageNegative page;
 
     private static final String baseUrl = "https://www.jetbrains.com/help/idea/ai-assistant-in-jetbrains-ides.html";
     @BeforeMethod
     public void initPage() {
         driver = new ChromeDriver();
-        page = new SeleniumDocsPageNegative(driver);
         driver.get(baseUrl);
-
+        driverReady = true;
+        page = new SeleniumDocsPageNegative(driver);
     }
 
-    @AfterTest
+    @AfterMethod
     public void teardown() {
         if (driver != null) {
             driver.quit();
