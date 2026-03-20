@@ -6,7 +6,7 @@ public class SeleniumDocsPageNegative extends BasePage {
 
     public SeleniumDocsPageNegative(WebDriver driver) {super(driver);}
 
-    //below locators are defined
+    // Locators are private to enforce encapsulation and prevent tests from accessing elements directly
     private By searchBox = By.name("q");
     private By ghostElement = By.id("nonExistentElement");
     private By slowElement = By.id("slowElement");
@@ -21,7 +21,8 @@ public class SeleniumDocsPageNegative extends BasePage {
     private By emailField = By.xpath("//input[@placeholder='Email address']");
     private By submitButton = By.cssSelector("button[data-test='feedback-send']");
 
-    //below methods for interactions with the page are defined
+    //below methods for interactions with the page are defined. Page methods return data instead of asserting
+    // so tests control validation and remain flexible and reusable
     public void goToBrokenLink() {
         driver.get("https://www.jetbrains.com/help/idea/non-existent-page.html");
     }

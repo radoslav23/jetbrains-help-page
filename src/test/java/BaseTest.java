@@ -8,14 +8,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class BaseTest {
+    // Protected so child page classes can access driver and driverReady,
+    // while keeping them hidden from tests and external classes.
     protected WebDriver driver;
     protected boolean driverReady = false;
 
-    public void takeScreenshot(String testName) {
-
+    public File takeScreenshot(String testName) {
+        //Takes a screenshot when a test fails and stores it in the screenshots folder with a timestamped filename
         if (driver == null) {
             System.out.println("Driver not ready, screenshot skipped.");
-            return;
+            return null;
         }
 
         try {
@@ -37,5 +39,6 @@ public class BaseTest {
         } catch (Exception e) {
             System.out.println("Failed to take screenshot: " + e.getMessage());
         }
+        return null;
     }
 }

@@ -1,9 +1,14 @@
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class BasePage {
+    // Protected so child page classes can access driver, wait, and js,
+    // while keeping them hidden from tests and external classes.
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected JavascriptExecutor js;
@@ -20,5 +25,24 @@ public class BasePage {
         //Sets up an explicit wait with a 2-second timeout. This helps synchronize actions with dynamic page content
         this.js = (JavascriptExecutor) driver;
         //Casts the WebDriver to a JavascriptExecutor so you can run JavaScript commands when needed
+    }
+
+    private By acceptAllButton = By.xpath("//div[@id='ch2-dialog']//button[.='Accept All']");
+
+    public void acceptCookies() {
+        // Attempt a normal click on the cookie banner, falling back to JS click if needed for reliability
+        try {
+            WebElement cookieButton = wait.until(ExpectedConditions.elementToBeClickable(acceptAllButton));
+            cookieButton.click();
+        } catch (Exception e) {
+            // Fallback to JS click if Selenium click fails
+            try {
+                // Try a normal click first. If Selenium refuses, fall back to a JS click without waiting
+                WebElement cookieButton = driver.findElement(acceptAllButton);
+                js.executeScript("arguments[0].click();", cookieButton);
+            } catch (Exception ignored) {
+                // Cookie banner not present or already dismissed
+            }
+        }
     }
 }

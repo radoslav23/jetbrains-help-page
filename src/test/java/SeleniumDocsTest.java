@@ -31,17 +31,16 @@ public class SeleniumDocsTest extends BaseTest{
     public void SeleniumDocsPage () throws MalformedURLException {
         page.clickTestingLink();
         page.clickSeleniumHeader();
-        page.verifyAddElementsText();
-        Assert.assertEquals(page.verifyAddElementsText(), "Add elements to code", "Heading text mismatch"
-        );
-
+        Assert.assertEquals(page.verifyAddElementsText(), "Add elements to code", "Heading text mismatch");
+        //another option is to write:
+        //String actual = page.verifyAddElementsText();
+        //Assert.assertEquals(actual, "Add elements to code", "Heading text mismatch");
     }
 
     @Test
     public void ClickJUnitLink () throws MalformedURLException {
         page.clickTestingLink();
         page.clickJUnit();
-        page.verifyJUnitText();
         Assert.assertEquals(page.verifyJUnitText(), "Tutorial: Get started with JUnit", "Heading text mismatch");
     }
 
@@ -50,7 +49,6 @@ public class SeleniumDocsTest extends BaseTest{
         page.clickSearchIcon();
         page.typeKeyword();
         page.clickSearchResult();
-        page.verifyDebugToolText();
         Assert.assertEquals(page.verifyDebugToolText(), "Debug tool window", "Heading text mismatch");
     }
 

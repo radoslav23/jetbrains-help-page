@@ -15,6 +15,7 @@ public class SeleniumDocsTestNegative extends BaseTest{
         driver.get(baseUrl);
         driverReady = true;
         page = new SeleniumDocsPageNegative(driver);
+        page.acceptCookies();
     }
 
     @AfterMethod
@@ -43,7 +44,6 @@ public class SeleniumDocsTestNegative extends BaseTest{
         SeleniumDocsPage docsPage = new SeleniumDocsPage(driver);
         docsPage.acceptCookies();
         docsPage.clickSearchIcon();
-        page.searchInvalidKeyword();
         Assert.assertTrue(page.searchInvalidKeyword().contains("We’re sorry! We couldn’t find results"),
                 "Expected 'no results' message");
     }
@@ -83,8 +83,8 @@ public class SeleniumDocsTestNegative extends BaseTest{
 
     @Test
     public void TypeInvalidEmail () {
-        SeleniumDocsPage docsPage = new SeleniumDocsPage(driver);
-        docsPage.acceptCookies();
+        //SeleniumDocsPage docsPage = new SeleniumDocsPage(driver);
+        //docsPage.acceptCookies();
         page.voteWithNegative();
         page.typeInvalidEmail();
         Assert.assertTrue(page.isTheEmailInvalid());

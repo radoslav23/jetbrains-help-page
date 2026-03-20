@@ -10,8 +10,7 @@ public class SeleniumDocsPage extends BasePage {
         super(driver);
     }
 
-    //below locators are defined
-    private By acceptAllButton = By.xpath("//div[@id='ch2-dialog']//button[.='Accept All']");
+    // Locators are private to enforce encapsulation and prevent tests from accessing elements directly
     private By testingLink = By.xpath("//a[normalize-space()='Testing']");
     private By seleniumHeader = By.xpath("//h3[normalize-space()='Selenium']");
     private By addElementHeading = By.xpath("//span[normalize-space()='Add elements to code']");
@@ -26,24 +25,14 @@ public class SeleniumDocsPage extends BasePage {
     private By wasPageHelpful = By.xpath("/html//div[@id='webhelp-root']/div/div[2]//article//div[.='Was this page helpful?']");
     private By thanksForFeedback = By.xpath("//p[@class='feedback__text']");
 
-    //below methods for interactions with the page are defined
-    public void acceptCookies() {
-        List<WebElement> buttons = driver.findElements(acceptAllButton);
-
-        if (!buttons.isEmpty()) {
-            try {
-                buttons.get(0).click();
-            } catch (Exception e) {
-                js.executeScript("arguments[0].click();", buttons.get(0));
-            }
-        }
+    //below methods for interactions with the page are defined. Page methods return data instead of asserting
+    // so tests control validation and remain flexible and reusable
+    public void clickTestingLink(){
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(testingLink));
+        element.click();
     }
 
-    public void  clickTestingLink(){
-        driver.findElement(testingLink).click();
-    }
-
-    public void  clickSeleniumHeader(){
+    public void clickSeleniumHeader(){
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(seleniumHeader));
         js.executeScript("arguments[0].scrollIntoView(true);", element);
         element.click();

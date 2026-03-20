@@ -7,7 +7,7 @@ public class DownloadSectionPage extends BasePage {
 
     public DownloadSectionPage(WebDriver driver) {super(driver);}
 
-    //below locators are defined
+    // Locators are private to enforce encapsulation and prevent tests from accessing elements directly
     private By getIntellijIdeaButton = By.xpath("/html//div[@id='webhelp-root']/div//a[@href='https://www.jetbrains.com/idea/download/']");
     private By pricingButton = By.xpath("/html//div[@id='js-menu-second-desktop']//a[@href='/idea/buy/']/span[@class='_content_10h2pj3_207']");
     private By downloadButton = By.xpath("/html//div[@id='js-menu-second-desktop']//a[@href='/idea/download/']/span[@class='_content_10h2pj3_207']");
@@ -26,7 +26,8 @@ public class DownloadSectionPage extends BasePage {
     private By tarLinux = By.xpath("//span[normalize-space()='.tar.gz (Linux)']");
     private By tarLinuxArm64 = By.xpath("//span[normalize-space()='.tar.gz (Linux ARM64)']");
 
-    //below methods for interactions with the page are defined
+    //below methods for interactions with the page are defined. Page methods return data instead of asserting
+    // so tests control validation and remain flexible and reusable
     public void clickGetIntellijIdeaButton() {
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(getIntellijIdeaButton));
         element.click();
