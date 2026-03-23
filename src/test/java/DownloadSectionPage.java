@@ -14,7 +14,6 @@ public class DownloadSectionPage extends BasePage {
     private By intelliJHeading = By.xpath("//p[@class='_rs-subtitle-2_1owszn1_1 _rs-text_hardness_auto_1owszn1_1 wt-offset-top-12']");
     private By macOsButton = By.xpath("//div[@id='download-block']/section[1]//div[@class='_scrollable_171fxw9_23']/div/button[2]/div[.='macOS']");
     private By linuxButton = By.xpath("//div[@id='download-block']/section[1]//div[@class='_scrollable_171fxw9_23']/div/button[3]/div[.='Linux']");
-    private By windowsButton = By.xpath("//div[@id='download-block']/section[1]//div[@class='_scrollable_171fxw9_23']/div/button[1]/div[.='Windows']");
     private By windowsDownloadDropdown = By.xpath("//span[@title='.exe (Windows)']");
     private By windowsZip = By.linkText(".zip (Windows)");
     private By windowsExe = By.linkText(".exe (Windows)");

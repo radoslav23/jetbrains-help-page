@@ -35,6 +35,8 @@ public class SeleniumDocsPageNegative extends BasePage {
         return resultMessage.getText();
     }
 
+    //This method checks whether the cookie banner is missing from the page
+    //and returns true if no elements matching the cookie banner locator are found
     public boolean isCookieBannerMissing() {
         return driver.findElements(cookieBanner).isEmpty();
     }
