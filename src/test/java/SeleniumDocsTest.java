@@ -28,24 +28,21 @@ public class SeleniumDocsTest extends BaseTest{
     }
 
     @Test
-    public void SeleniumDocsPage () throws MalformedURLException {
+    public void seleniumDocsPage () throws MalformedURLException {
         page.clickTestingLink();
         page.clickSeleniumHeader();
         Assert.assertEquals(page.verifyAddElementsText(), "Add elements to code", "Heading text mismatch");
-        //another option is to write:
-        //String actual = page.verifyAddElementsText();
-        //Assert.assertEquals(actual, "Add elements to code", "Heading text mismatch");
     }
 
     @Test
-    public void ClickJUnitLink () throws MalformedURLException {
+    public void clickJUnitLink () throws MalformedURLException {
         page.clickTestingLink();
         page.clickJUnit();
         Assert.assertEquals(page.verifyJUnitText(), "Tutorial: Get started with JUnit", "Heading text mismatch");
     }
 
     @Test
-    public void SearchForKeyword () throws MalformedURLException {
+    public void searchForKeyword () throws MalformedURLException {
         page.clickSearchIcon();
         page.typeKeyword();
         page.clickSearchResult();
@@ -53,7 +50,7 @@ public class SeleniumDocsTest extends BaseTest{
     }
 
     @Test
-    public void VotePositiveFeedback () {
+    public void votePositiveFeedback () {
         page.clickAiSection();
         Assert.assertEquals(page.verifyWasPageHelpfulHeading(), "Was this page helpful?");
         page.voteWithYes();
