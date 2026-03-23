@@ -26,8 +26,6 @@ public class DownloadSectionTest extends BaseTest {
 
     @BeforeMethod
     public void setUpDownloadPage() {
-        //SeleniumDocsPage docsPage = new SeleniumDocsPage(driver);
-        //docsPage.acceptCookies();
         page.acceptCookies();
         page.clickGetIntellijIdeaButton();
     }
