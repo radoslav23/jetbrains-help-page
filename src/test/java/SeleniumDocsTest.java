@@ -13,19 +13,19 @@ public class SeleniumDocsTest extends BaseTest{
     private static final String baseUrl = "https://www.jetbrains.com/help/idea/getting-started.html";
     @BeforeMethod
     public void initPage() {
-        //driver = new ChromeDriver();
+        driver = new ChromeDriver();
         driver.get(baseUrl);
         driverReady = true;
         page = new SeleniumDocsPage(driver);
         page.acceptCookies();
     }
 
-//    @AfterMethod
-//    public void teardown() {
-//        if (driver != null) {
-//            driver.quit();
-//        }
-//    }
+    @AfterMethod
+    public void teardown() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
 
     @Test
     public void seleniumDocsPage () throws MalformedURLException {
