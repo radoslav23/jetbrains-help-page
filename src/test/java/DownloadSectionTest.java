@@ -9,12 +9,14 @@ public class DownloadSectionTest extends BaseTest {
     DownloadSectionPage page;
 
     private static final String baseUrl = "https://www.jetbrains.com/help/idea/getting-started.html";
-    @BeforeTest
+    @BeforeMethod
     public void initPage() {
         //driver = new ChromeDriver();
         driver.get(baseUrl);
         driverReady = true;
         page = new DownloadSectionPage(driver);
+        page.acceptCookies();
+        page.clickGetIntellijIdeaButton();
     }
 
 //    @AfterTest
@@ -24,11 +26,11 @@ public class DownloadSectionTest extends BaseTest {
 //        }
 //    }
 
-    @BeforeMethod
-    public void setUpDownloadPage() {
-        page.acceptCookies();
-        page.clickGetIntellijIdeaButton();
-    }
+//    @BeforeMethod
+//    public void setUpDownloadPage() {
+//        page.acceptCookies();
+//        page.clickGetIntellijIdeaButton();
+//    }
 
 
     @Test
