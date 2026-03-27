@@ -1,9 +1,11 @@
 name: Nightly UI Tests
 
 on:
-  schedule:
-    - cron: "0 0 * * *"   # Runs at 02:00 Bulgaria time (00:00 UTC)
-  workflow_dispatch:       # Allows manual run
+  push:
+    branches:
+      - experiments/ci
+    workflow_dispatch:
+
 
 jobs:
   run-tests:
@@ -17,7 +19,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '21'
 
       - name: Cache Maven dependencies
         uses: actions/cache@v4
