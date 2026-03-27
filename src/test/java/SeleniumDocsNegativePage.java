@@ -1,10 +1,9 @@
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import java.util.List;
 
-public class SeleniumDocsPageNegative extends BasePage {
+public class SeleniumDocsNegativePage extends BasePage {
 
-    public SeleniumDocsPageNegative(WebDriver driver) {super(driver);}
+    public SeleniumDocsNegativePage(WebDriver driver) {super(driver);}
 
     // Locators are private to enforce encapsulation and prevent tests from accessing elements directly
     private By cookieBanner = By.id("cookie-banner");

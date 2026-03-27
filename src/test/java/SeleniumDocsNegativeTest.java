@@ -1,12 +1,10 @@
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
 @Listeners(TestListener.class)
-public class SeleniumDocsTestNegative extends BaseTest{
+public class SeleniumDocsNegativeTest extends BaseTest{
 
-    SeleniumDocsPageNegative page;
+    SeleniumDocsNegativePage page;
     private static final String baseUrl = "https://www.jetbrains.com/help/idea/getting-started.html";
     private static final String brokenUrl = "https://www.jetbrains.com/help/idea/non-existent-page.html";
 
@@ -15,7 +13,7 @@ public class SeleniumDocsTestNegative extends BaseTest{
         //driver = new ChromeDriver();
         driver.get(baseUrl);
         driverReady = true;
-        page = new SeleniumDocsPageNegative(driver);
+        page = new SeleniumDocsNegativePage(driver);
         page.acceptCookies();
     }
 
