@@ -9,8 +9,8 @@ import java.net.MalformedURLException;
 public class SeleniumDocsTest extends BaseTest{
 
     SeleniumDocsPage page;
-
     private static final String baseUrl = "https://www.jetbrains.com/help/idea/getting-started.html";
+
     @BeforeMethod
     public void initPage() {
         //driver = new ChromeDriver();

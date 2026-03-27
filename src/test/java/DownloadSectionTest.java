@@ -7,8 +7,8 @@ import org.testng.annotations.*;
 public class DownloadSectionTest extends BaseTest {
 
     DownloadSectionPage page;
-
     private static final String baseUrl = "https://www.jetbrains.com/help/idea/getting-started.html";
+
     @BeforeMethod
     public void initPage() {
         //driver = new ChromeDriver();

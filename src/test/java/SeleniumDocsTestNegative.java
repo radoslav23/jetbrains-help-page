@@ -9,6 +9,7 @@ public class SeleniumDocsTestNegative extends BaseTest{
     SeleniumDocsPageNegative page;
     private static final String baseUrl = "https://www.jetbrains.com/help/idea/getting-started.html";
     private static final String brokenUrl = "https://www.jetbrains.com/help/idea/non-existent-page.html";
+
     @BeforeMethod
     public void initPage() {
         //driver = new ChromeDriver();
