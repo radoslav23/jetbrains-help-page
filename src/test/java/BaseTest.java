@@ -1,4 +1,5 @@
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,6 +11,7 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.Date;
 
 public class BaseTest {
@@ -28,10 +30,18 @@ public class BaseTest {
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--disable-gpu");
             options.addArguments("--window-size=1920,1080");
+            options.setPageLoadStrategy(PageLoadStrategy.EAGER);
         }
 
         driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
+
+        // Only maximize locally
+        if (System.getenv("GITHUB_ACTIONS") == null) {
+            driver.manage().window().maximize();
+        }
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
     }
 
     @AfterClass
