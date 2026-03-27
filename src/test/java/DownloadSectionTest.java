@@ -11,18 +11,18 @@ public class DownloadSectionTest extends BaseTest {
     private static final String baseUrl = "https://www.jetbrains.com/help/idea/getting-started.html";
     @BeforeTest
     public void initPage() {
-        driver = new ChromeDriver();
+        //driver = new ChromeDriver();
         driver.get(baseUrl);
         driverReady = true;
         page = new DownloadSectionPage(driver);
     }
 
-    @AfterTest
-    public void teardown() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
+//    @AfterTest
+//    public void teardown() {
+//        if (driver != null) {
+//            driver.quit();
+//        }
+//    }
 
     @BeforeMethod
     public void setUpDownloadPage() {

@@ -11,19 +11,19 @@ public class SeleniumDocsTestNegative extends BaseTest{
     private static final String brokenUrl = "https://www.jetbrains.com/help/idea/non-existent-page.html";
     @BeforeMethod
     public void initPage() {
-        driver = new ChromeDriver();
+        //driver = new ChromeDriver();
         driver.get(baseUrl);
         driverReady = true;
         page = new SeleniumDocsPageNegative(driver);
         page.acceptCookies();
     }
 
-    @AfterMethod
-    public void teardown() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
+//    @AfterMethod
+//    public void teardown() {
+//        if (driver != null) {
+//            driver.quit();
+//        }
+//    }
 
     @Test
     public void testBrokenLinkNavigation() {

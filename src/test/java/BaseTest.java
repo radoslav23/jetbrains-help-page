@@ -1,6 +1,11 @@
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
@@ -12,6 +17,28 @@ public class BaseTest {
     // while keeping them hidden from tests and external classes.
     protected WebDriver driver;
     protected boolean driverReady = false;
+
+    @BeforeClass
+    public void setUpClass() {
+        ChromeOptions options = new ChromeOptions();
+
+        if (System.getenv("GITHUB_ACTIONS") != null) {
+            options.addArguments("--headless=new");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+        }
+
+        driver = new ChromeDriver(options);
+        driver.manage().window().maximize();
+    }
+
+    @AfterClass
+    public void tearDownClass() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+
 
     public File takeScreenshot(String testName) {
         //Takes a screenshot when a test fails and stores it in the screenshots folder with a timestamped filename
