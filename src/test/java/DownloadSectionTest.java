@@ -43,6 +43,10 @@ public class DownloadSectionTest extends BaseTest {
 
     @Test
     public void exploreWindowsDownloadOptions() {
+        Assert.assertEquals(
+                page.getCurrentUrl(),
+                "https://www.jetbrains.com/idea/download/?section=windows"
+        );
         page.clickWindowsDownloadDropdown();
         Assert.assertTrue(page.windowsZipVisibility());
         Assert.assertTrue(page.windowsExeVisibility());
@@ -52,6 +56,10 @@ public class DownloadSectionTest extends BaseTest {
     @Test
     public void clickMacOsDownloadDropdown() {
         page.clickMacOsButton();
+        Assert.assertEquals(
+                page.getCurrentUrl(),
+                "https://www.jetbrains.com/idea/download/?section=mac"
+        );
         Assert.assertTrue(page.macOsDownloadButtonVisible());
         page.macOsDownloadButtonClick();
         Assert.assertTrue(page.dmgAppleSiliconVisibility());
@@ -61,6 +69,10 @@ public class DownloadSectionTest extends BaseTest {
     @Test
     public void clickLinuxDownloadDropdown() {
         page.clickLinuxButton();
+        Assert.assertEquals(
+                page.getCurrentUrl(),
+                "https://www.jetbrains.com/idea/download/?section=linux"
+        );
         Assert.assertTrue(page.linuxDownloadButtonVisible());
         page.linuxDownloadButtonClick();
         Assert.assertTrue(page.tarLinuxVisibility());
