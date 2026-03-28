@@ -1,5 +1,3 @@
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -54,6 +52,6 @@ public class SeleniumDocsTest extends BaseTest{
         page.clickAiSection();
         Assert.assertEquals(page.verifyWasPageHelpfulHeading(), "Was this page helpful?");
         page.voteWithYes();
-        Assert.assertEquals(page.verifyVotedYes(), "Thanks for your feedback!");
+        Assert.assertEquals(page.voteOptionDisappearAfterVote(), "Thanks for your feedback!");
     }
 }

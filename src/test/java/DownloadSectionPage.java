@@ -74,16 +74,19 @@ public class DownloadSectionPage extends BasePage {
 
     public void clickMacOsButton(){
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(macOsButton));
-        element.click();
+        //element.click();
+        wait.until(ExpectedConditions.elementToBeClickable(element)).click();
     }
 
     public boolean macOsDownloadButtonVisible(){
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(macOsDownloadButton));
-        return element.isDisplayed();
+        //return element.isDisplayed();
+        return wait.until(ExpectedConditions.visibilityOf(element)).isDisplayed();
     }
     public void macOsDownloadButtonClick(){
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(macOsDownloadButton));
-        element.click();
+        //element.click();
+        wait.until(ExpectedConditions.elementToBeClickable(element)).click();
     }
 
     public boolean dmgAppleSiliconVisibility(){

@@ -2,7 +2,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import java.util.List;
 
 public class SeleniumDocsPage extends BasePage {
 
@@ -93,7 +92,7 @@ public class SeleniumDocsPage extends BasePage {
         js.executeScript("arguments[0].scrollIntoView(true);", element);
         element.click();
     }
-    public String verifyVotedYes(){
+    public String voteOptionDisappearAfterVote(){
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(thanksForFeedback));
         return element.getText();
     }
