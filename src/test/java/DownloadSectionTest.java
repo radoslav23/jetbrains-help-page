@@ -1,5 +1,3 @@
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -9,15 +7,22 @@ public class DownloadSectionTest extends BaseTest {
     DownloadSectionPage page;
     private static final String baseUrl = "https://www.jetbrains.com/help/idea/getting-started.html";
 
-    @BeforeMethod
-    public void initPage() {
+    //@BeforeMethod
+    public void initPage(String url) {
         //driver = new ChromeDriver();
-        driver.get(baseUrl);
+        //driver.get(baseUrl);
+        driver.get(url);
         driverReady = true;
         page = new DownloadSectionPage(driver);
         page.acceptCookies();
-        page.clickGetIntellijIdeaButton();
+        //page.clickGetIntellijIdeaButton();
     }
+
+    @BeforeMethod
+    public void openWindowsDownloadPage() {
+        initPage("https://www.jetbrains.com/idea/download/?section=windows");
+    }
+
 
 //    @AfterTest
 //    public void teardown() {
