@@ -120,27 +120,9 @@ public class SeleniumDocsNegativePage extends BasePage {
         element.click();
     }
 
-//    public boolean feedbackFormInvisibility(){
-//    return wait.until(ExpectedConditions.invisibilityOfElementLocated(feedbackForm));
-//    }
-
-//    public boolean feedbackFormInvisibility() {
-//        return wait.until(driver -> {
-//            try {
-//                return !driver.findElement(feedbackForm).isDisplayed();
-//            } catch (NoSuchElementException e) {
-//                return true; // removed from DOM
-//            }
-//        });
-//    }
-
-    public boolean feedbackFormInvisibility() {
-        return wait.until(driver ->
-                driver.findElements(feedbackForm).isEmpty()
-        );
+    public boolean feedbackFormInvisibility(){
+        return wait.until(ExpectedConditions.invisibilityOfElementLocated(feedbackForm));
     }
-
-
 
     public void typeInvalidEmail(){
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(emailField));
