@@ -5,43 +5,20 @@ import org.testng.annotations.*;
 public class DownloadSectionTest extends BaseTest {
 
     DownloadSectionPage page;
-    private static final String baseUrl = "https://www.jetbrains.com/idea/download/?section=windows";
+    private static final String baseUrl = "https://www.jetbrains.com/help/idea/getting-started.html";
 
     @BeforeMethod
     public void initPage() {
-        //driver = new ChromeDriver();
         driver.get(baseUrl);
-        //driver.get(url);
         driverReady = true;
         page = new DownloadSectionPage(driver);
         page.acceptCookies();
-        //page.clickGetIntellijIdeaButton();
+        page.clickGetIntellijIdeaButton();
     }
-
-//    @BeforeMethod
-//    public void openWindowsDownloadPage() {
-//        initPage("https://www.jetbrains.com/idea/download/?section=windows");
-//        page.clickWindowsButton();
-//    }
-
-
-//    @AfterTest
-//    public void teardown() {
-//        if (driver != null) {
-//            driver.quit();
-//        }
-//    }
-
-//    @BeforeMethod
-//    public void setUpDownloadPage() {
-//        page.acceptCookies();
-//        page.clickGetIntellijIdeaButton();
-//    }
-
 
     @Test
     public void navigateIntelliJDownloadPage() {
-        //Assert.assertEquals(page.getCurrentUrl(), "https://www.jetbrains.com/idea/download/?section=windows");
+        Assert.assertEquals(page.getCurrentUrl(), "https://www.jetbrains.com/idea/download/?section=windows");
         Assert.assertTrue(page.prisingButtonDisplayed());
         Assert.assertTrue(page.downloadButtonDisplayed());
         Assert.assertTrue(page.leadingIdeHeadingVisibility());
