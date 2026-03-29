@@ -24,6 +24,7 @@ public class DownloadSectionPage extends BasePage {
     private By linuxDownloadButton = By.xpath("//*[@id=\"download-block\"]/section[2]/div/div/div[1]/div[2]/div[3]/div/div/div/span/button");
     private By tarLinux = By.xpath("//span[normalize-space()='.tar.gz (Linux)']");
     private By tarLinuxArm64 = By.xpath("//span[normalize-space()='.tar.gz (Linux ARM64)']");
+    private By windowsButton = By.xpath("//div[@id='download-block']/section[1]//div[@class='_scrollable_171fxw9_23']/div/button[1]/div[.='Windows']");
 
     //below methods for interactions with the page are defined. Page methods return data instead of asserting
     // so tests control validation and remain flexible and reusable
@@ -120,5 +121,10 @@ public class DownloadSectionPage extends BasePage {
     public boolean tarLinuxArm64Visibility(){
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(tarLinuxArm64));
         return element.isDisplayed();
+    }
+
+    public void clickWindowsButton(){
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(windowsButton));
+        element.click();
     }
 }

@@ -21,6 +21,7 @@ public class DownloadSectionTest extends BaseTest {
     @BeforeMethod
     public void openWindowsDownloadPage() {
         initPage("https://www.jetbrains.com/idea/download/?section=windows");
+        page.clickWindowsButton();
     }
 
 
