@@ -5,24 +5,24 @@ import org.testng.annotations.*;
 public class DownloadSectionTest extends BaseTest {
 
     DownloadSectionPage page;
-    private static final String baseUrl = "https://www.jetbrains.com/help/idea/getting-started.html";
+    private static final String baseUrl = "https://www.jetbrains.com/idea/download/?section=windows";
 
-    //@BeforeMethod
-    public void initPage(String url) {
+    @BeforeMethod
+    public void initPage() {
         //driver = new ChromeDriver();
-        //driver.get(baseUrl);
-        driver.get(url);
+        driver.get(baseUrl);
+        //driver.get(url);
         driverReady = true;
         page = new DownloadSectionPage(driver);
         page.acceptCookies();
         //page.clickGetIntellijIdeaButton();
     }
 
-    @BeforeMethod
-    public void openWindowsDownloadPage() {
-        initPage("https://www.jetbrains.com/idea/download/?section=windows");
-        page.clickWindowsButton();
-    }
+//    @BeforeMethod
+//    public void openWindowsDownloadPage() {
+//        initPage("https://www.jetbrains.com/idea/download/?section=windows");
+//        page.clickWindowsButton();
+//    }
 
 
 //    @AfterTest
