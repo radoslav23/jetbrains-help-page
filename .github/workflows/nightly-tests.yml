@@ -6,7 +6,7 @@ on:
       - experiments/ci
     workflow_dispatch:
     schedule:
-    - cron: "0 1 * * *" //- Run every night at 01:00 UTC, 03:00 or 04:00 in Bulgarian time
+    - cron: "0 1 * * *" #Run every night at 01:00 UTC, 03:00 or 04:00 in Bulgarian time
 
 jobs:
   run-tests:
