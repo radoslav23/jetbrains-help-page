@@ -24,6 +24,7 @@ public class SeleniumDocsPage extends BasePage {
     private By wasPageHelpful = By.xpath("/html//div[@id='webhelp-root']/div/div[2]//article//div[.='Was this page helpful?']");
     private By thanksForFeedback = By.xpath("//p[@class='feedback__text']");
 
+
     //below methods for interactions with the page are defined. Page methods return data instead of asserting
     // so tests control validation and remain flexible and reusable
     public void clickTestingLink(){
@@ -89,7 +90,7 @@ public class SeleniumDocsPage extends BasePage {
 
     public void voteWithYes(){
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(yesButton));
-        //js.executeScript("arguments[0].scrollIntoView(true);", element);
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
         element.click();
     }
     public String voteOptionDisappearAfterVote(){
