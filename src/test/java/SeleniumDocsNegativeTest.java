@@ -50,7 +50,7 @@ public class SeleniumDocsNegativeTest extends BaseTest{
         Assert.assertFalse(page.isSlowElementVisible(), "Slow element should not appear");
     }
 
-    @Test
+    @Test(groups = "local-only")
     public void voteNegativeFeedback () {
         page.voteWithNegative();
         Assert.assertTrue(page.feedbackFormVisibility(), "Feedback form was not visible");
