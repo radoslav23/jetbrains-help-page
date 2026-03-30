@@ -30,7 +30,7 @@ jobs:
             ${{ runner.os }}-m2-
 
       - name: Run TestNG tests
-        run: mvn clean test
+        run: mvn clean test -DexcludedGroups=local-only
 
       - name: Upload screenshots on failure
         if: failure()
