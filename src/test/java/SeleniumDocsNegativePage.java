@@ -125,6 +125,9 @@ public class SeleniumDocsNegativePage extends BasePage {
             field.sendKeys(String.valueOf(c));
             try { Thread.sleep(20); } catch (InterruptedException ignored) {}
         }
+        js.executeScript("arguments[0].dispatchEvent(new Event('input', { bubbles: true }));", field);
+        js.executeScript("arguments[0].dispatchEvent(new Event('change', { bubbles: true }));", field);
+        js.executeScript("arguments[0].dispatchEvent(new Event('blur', { bubbles: true }));", field);
 
         // Trigger blur + validation
         field.sendKeys(Keys.TAB);

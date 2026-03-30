@@ -49,6 +49,7 @@ public class SeleniumDocsNegativeTest extends BaseTest{
     public void testSlowElementTimeout() {
         Assert.assertFalse(page.isSlowElementVisible(), "Slow element should not appear");
     }
+
     @Test
     public void voteNegativeFeedback () {
         page.voteWithNegative();
