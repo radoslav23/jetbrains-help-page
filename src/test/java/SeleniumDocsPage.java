@@ -95,11 +95,6 @@ public class SeleniumDocsPage extends BasePage {
         js.executeScript("arguments[0].scrollIntoView(true);", element);
         element.click();
     }
-//    public String voteOptionDisappearAfterVote(){
-//        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(thanksForFeedback));
-//        js.executeScript("arguments[0].scrollIntoView(true);", element);
-//        return element.getText().trim();
-//    }
 
     public String voteOptionDisappearAfterVote(){
         wait.until(ExpectedConditions.textToBePresentInElementLocated(thanksForFeedback, "Thanks for your feedback!"));

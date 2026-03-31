@@ -60,7 +60,6 @@ public class SeleniumDocsNegativePage extends BasePage {
         return element.isDisplayed();
     }
 
-
     public String feedbackFormHeading() {
         WebElement element =  wait.until(ExpectedConditions.visibilityOfElementLocated(howToImproveHeading));
         return element.getText();
@@ -105,32 +104,12 @@ public class SeleniumDocsNegativePage extends BasePage {
         return element.getAttribute("class").contains("button_disabled");
     }
 
-//    public void typeFeedback(){
-//        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(textField));
-//        element.click();
-//        element.clear();
-//        element.sendKeys("I'm not happy with the site navigation");
-//        element.sendKeys(Keys.TAB);
-//    }
-
-    public void typeFeedback() {
-        WebElement field = wait.until(ExpectedConditions.elementToBeClickable(textField));
-
-        field.click();
-        field.clear();
-
-        // Type character by character to trigger input events
-        String text = "I'm not happy with the site navigation";
-        for (char c : text.toCharArray()) {
-            field.sendKeys(String.valueOf(c));
-            try { Thread.sleep(20); } catch (InterruptedException ignored) {}
-        }
-        js.executeScript("arguments[0].dispatchEvent(new Event('input', { bubbles: true }));", field);
-        js.executeScript("arguments[0].dispatchEvent(new Event('change', { bubbles: true }));", field);
-        js.executeScript("arguments[0].dispatchEvent(new Event('blur', { bubbles: true }));", field);
-
-        // Trigger blur + validation
-        field.sendKeys(Keys.TAB);
+    public void typeFeedback(){
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(textField));
+        element.click();
+        element.clear();
+        element.sendKeys("I'm not happy with the site navigation");
+        element.sendKeys(Keys.TAB);
     }
 
     public boolean submitButtonEnabled(){

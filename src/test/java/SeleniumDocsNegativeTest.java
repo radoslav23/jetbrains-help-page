@@ -10,19 +10,11 @@ public class SeleniumDocsNegativeTest extends BaseTest{
 
     @BeforeMethod
     public void initPage() {
-        //driver = new ChromeDriver();
         driver.get(baseUrl);
         driverReady = true;
         page = new SeleniumDocsNegativePage(driver);
         page.acceptCookies();
     }
-
-//    @AfterMethod
-//    public void teardown() {
-//        if (driver != null) {
-//            driver.quit();
-//        }
-//    }
 
     @Test
     public void testBrokenLinkNavigation() {
@@ -51,6 +43,13 @@ public class SeleniumDocsNegativeTest extends BaseTest{
     }
 
     @Test(groups = "local-only")
+    //The JetBrains feedback widget behaves differently in headless environments.
+    //The button’s enabled state depends on client-side validation that does not
+    //fire consistently in CI due to timing, hydration delays, and animation-driven
+    //DOM updates. As a result, the button remains disabled and the test fails
+    //intermittently despite correct locators and event simulation.
+    //The test works reliably in local browsers, so it is kept for functional
+    //coverage but excluded from CI to avoid false negatives and pipeline noise.
     public void voteNegativeFeedback () {
         page.voteWithNegative();
         Assert.assertTrue(page.feedbackFormVisibility(), "Feedback form was not visible");

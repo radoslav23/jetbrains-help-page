@@ -47,10 +47,9 @@ public class BaseTest {
     @AfterClass
     public void tearDownClass() {
         if (driver != null) {
-            //driver.quit();
+            driver.quit();
         }
     }
-
 
     public File takeScreenshot(String testName) {
         //Takes a screenshot when a test fails and stores it in the screenshots folder with a timestamped filename
