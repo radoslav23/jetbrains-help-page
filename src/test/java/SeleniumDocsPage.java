@@ -23,7 +23,8 @@ public class SeleniumDocsPage extends BasePage {
     private By yesButton = By.xpath("/html//div[@id='webhelp-root']/div/div[2]/div//article//div[@class='wt-col-inline']/button[1]");
     private By wasPageHelpful = By.xpath("/html//div[@id='webhelp-root']/div/div[2]//article//div[.='Was this page helpful?']");
     //private By thanksForFeedback = By.xpath("//p[@class='feedback__text']");
-    private By thanksForFeedback = By.xpath("//div[@data-test='feedback-left']//p[contains(@class,'feedback__text')]");
+    private By thanksForFeedback = By.cssSelector("[data-test='feedback-left'] .feedback__text");
+
 
 
     //below methods for interactions with the page are defined. Page methods return data instead of asserting
