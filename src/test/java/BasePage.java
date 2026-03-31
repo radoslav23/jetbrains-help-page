@@ -26,7 +26,7 @@ public class BasePage {
         this.js = (JavascriptExecutor) driver;
         //Casts the WebDriver to a JavascriptExecutor so you can run JavaScript commands when needed
     }
-    //previously was private
+
     final By acceptAllButton = By.xpath("//div[@id='ch2-dialog']//button[.='Accept All']");
 
     public void acceptCookies() {
