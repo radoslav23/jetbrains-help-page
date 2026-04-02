@@ -40,7 +40,7 @@ public class SeleniumDocsTest extends BaseTest{
         Assert.assertEquals(page.verifyDebugToolText(), "Debug tool window", "Heading text mismatch");
     }
 
-    @Test(groups = "local-only")
+    @Test
     //The JetBrains feedback widget renders differently in headless environments.
     //The text node appears with a delay due to animations and DOM rehydration,
     //causing the test to fail intermittently even though the logic and locator are correct.
