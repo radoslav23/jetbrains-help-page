@@ -41,11 +41,8 @@ public class SeleniumDocsTest extends BaseTest{
     }
 
     @Test(groups = "local-only")
-    //The JetBrains feedback widget renders differently in headless environments.
-    //The text node appears with a delay due to animations and DOM rehydration,
-    //causing the test to fail intermittently even though the logic and locator are correct.
-    //The test remains valid locally and is kept for functional coverage,
-    //but it is excluded from CI to avoid false negatives and pipeline noise
+    // JetBrains’ feedback widget renders unpredictably in CI, causing false failures.
+    // The test is reliable locally but excluded from CI to avoid pipeline noise.
     public void votePositiveFeedback () {
         page.clickAiSection();
         Assert.assertEquals(page.verifyWasPageHelpfulHeading(), "Was this page helpful?");

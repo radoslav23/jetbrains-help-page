@@ -44,13 +44,8 @@ public class SeleniumDocsNegativeTest extends BaseTest{
     }
 
     @Test(groups = "local-only")
-    //The JetBrains feedback widget behaves differently in headless environments.
-    //The button’s enabled state depends on client-side validation that does not
-    //fire consistently in CI due to timing, hydration delays, and animation-driven
-    //DOM updates. As a result, the button remains disabled and the test fails in headless environments
-    //intermittently despite correct locators and event simulation.
-    //The test works reliably in local browsers, so it is kept for functional
-    //coverage but excluded from CI to avoid false negatives and pipeline noise.
+    // The button’s enabled state is unreliable in CI due to delayed DOM updates.
+    // Works locally but excluded from CI to avoid false failures.
     public void voteNegativeFeedback () {
         page.voteWithNegative();
         Assert.assertTrue(page.feedbackFormVisibility(), "Feedback form was not visible");
