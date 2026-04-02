@@ -43,7 +43,7 @@ public class SeleniumDocsNegativeTest extends BaseTest{
         Assert.assertFalse(page.isSlowElementVisible(), "Slow element should not appear");
     }
 
-    @Test
+    @Test(groups = "local-only")
     //The JetBrains feedback widget behaves differently in headless environments.
     //The button’s enabled state depends on client-side validation that does not
     //fire consistently in CI due to timing, hydration delays, and animation-driven

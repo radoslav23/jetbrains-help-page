@@ -25,7 +25,7 @@ public class BaseTest {
         ChromeOptions options = new ChromeOptions();
 
         if (System.getenv("GITHUB_ACTIONS") != null) {
-            //options.addArguments("--headless=new");
+            options.addArguments("--headless=new");
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--disable-gpu");
@@ -40,7 +40,7 @@ public class BaseTest {
             driver.manage().window().maximize();
         }
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
     }
 
     @AfterClass

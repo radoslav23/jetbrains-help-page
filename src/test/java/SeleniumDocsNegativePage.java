@@ -107,30 +107,9 @@ public class SeleniumDocsNegativePage extends BasePage {
         return element.getAttribute("class").contains("button_disabled");
     }
 
-//    public void typeFeedback(){
-//        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(textField));
-//        element.sendKeys("I'm not happy with the site navigation");
-//    }
-
-    public void typeFeedback() {
+    public void typeFeedback(){
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(textField));
-
-        js.executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
-        element.click();
-
-        // Type slowly
-        for (char c : "I'm not happy with the site navigation".toCharArray()) {
-            element.sendKeys(String.valueOf(c));
-            new WebDriverWait(driver, Duration.ofMillis(30)).until(d -> true);
-        }
-
-        // Trigger JetBrains validation
-        js.executeScript("arguments[0].dispatchEvent(new Event('input', { bubbles: true }));", element);
-        js.executeScript("arguments[0].dispatchEvent(new Event('change', { bubbles: true }));", element);
-        js.executeScript("arguments[0].dispatchEvent(new Event('keyup', { bubbles: true }));", element);
-
-        // Blur to finalize validation
-        js.executeScript("arguments[0].blur();", element);
+        element.sendKeys("I'm not happy with the site navigation");
     }
 
     public boolean submitButtonEnabled(){
