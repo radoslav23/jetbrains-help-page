@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - experiments/ci
-    workflow_dispatch:
-    schedule:
-    - cron: "0 1 * * *" #Run every night at 01:00 UTC, 03:00 or 04:00 in Bulgarian time
+  workflow_dispatch:
+  schedule:
+    - cron: "0 1 * * *"
 
 jobs:
   run-tests:
@@ -21,6 +21,9 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
+
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@v1
 
       - name: Cache Maven dependencies
         uses: actions/cache@v4

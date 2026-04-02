@@ -106,10 +106,7 @@ public class SeleniumDocsNegativePage extends BasePage {
 
     public void typeFeedback(){
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(textField));
-        element.click();
-        element.clear();
         element.sendKeys("I'm not happy with the site navigation");
-        element.sendKeys(Keys.TAB);
     }
 
     public boolean submitButtonEnabled(){

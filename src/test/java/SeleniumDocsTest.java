@@ -1,3 +1,4 @@
+import org.openqa.selenium.HasCapabilities;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -50,5 +51,9 @@ public class SeleniumDocsTest extends BaseTest{
         Assert.assertEquals(page.verifyWasPageHelpfulHeading(), "Was this page helpful?");
         page.voteWithYes();
         Assert.assertEquals(page.voteOptionDisappearAfterVote(), "Thanks for your feedback!");
+        System.out.println("CI? " + System.getenv("GITHUB_ACTIONS"));
+        System.out.println("Window size: " + driver.manage().window().getSize());
+        System.out.println("Chrome version: " + ((HasCapabilities) driver).getCapabilities().getBrowserVersion());
+        System.out.println("Headless: " + ((HasCapabilities) driver).getCapabilities().is("headless"));
     }
 }

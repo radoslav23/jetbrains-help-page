@@ -25,8 +25,6 @@ public class SeleniumDocsPage extends BasePage {
     //private By thanksForFeedback = By.xpath("//p[@class='feedback__text']");
     private By thanksForFeedback = By.cssSelector("[data-test='feedback-left'] .feedback__text");
 
-
-
     //below methods for interactions with the page are defined. Page methods return data instead of asserting
     // so tests control validation and remain flexible and reusable
     public void clickTestingLink(){

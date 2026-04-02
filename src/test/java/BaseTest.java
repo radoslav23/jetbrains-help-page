@@ -34,7 +34,6 @@ public class BaseTest {
         }
 
         driver = new ChromeDriver(options);
-        //driver.manage().window().maximize();
 
         // Only maximize locally
         if (System.getenv("GITHUB_ACTIONS") == null) {
