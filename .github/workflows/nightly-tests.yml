@@ -3,7 +3,7 @@ name: Nightly UI Tests
 on:
   push:
     branches:
-      - experiments/ci
+      - master
   workflow_dispatch:
   schedule:
     - cron: "0 1 * * *"
