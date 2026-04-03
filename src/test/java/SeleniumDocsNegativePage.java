@@ -1,10 +1,12 @@
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import java.util.List;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SeleniumDocsPageNegative extends BasePage {
+import java.time.Duration;
 
-    public SeleniumDocsPageNegative(WebDriver driver) {super(driver);}
+public class SeleniumDocsNegativePage extends BasePage {
+
+    public SeleniumDocsNegativePage(WebDriver driver) {super(driver);}
 
     // Locators are private to enforce encapsulation and prevent tests from accessing elements directly
     private By cookieBanner = By.id("cookie-banner");
@@ -61,7 +63,6 @@ public class SeleniumDocsPageNegative extends BasePage {
         return element.isDisplayed();
     }
 
-
     public String feedbackFormHeading() {
         WebElement element =  wait.until(ExpectedConditions.visibilityOfElementLocated(howToImproveHeading));
         return element.getText();
@@ -113,6 +114,7 @@ public class SeleniumDocsPageNegative extends BasePage {
 
     public boolean submitButtonEnabled(){
         WebElement element =  wait.until(ExpectedConditions.visibilityOfElementLocated(submitButton));
+        System.out.println("Button classes: " + element.getAttribute("class"));
         return !element.getAttribute("class").contains("button_disabled");
     }
 
@@ -122,7 +124,7 @@ public class SeleniumDocsPageNegative extends BasePage {
     }
 
     public boolean feedbackFormInvisibility(){
-    return wait.until(ExpectedConditions.invisibilityOfElementLocated(feedbackForm));
+        return wait.until(ExpectedConditions.invisibilityOfElementLocated(feedbackForm));
     }
 
     public void typeInvalidEmail(){

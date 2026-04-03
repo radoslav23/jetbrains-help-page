@@ -2,7 +2,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import java.util.List;
 
 public class SeleniumDocsPage extends BasePage {
 
@@ -23,7 +22,8 @@ public class SeleniumDocsPage extends BasePage {
     private By aiSection = By.xpath("/html//div[@id='webhelp-root']/div/div[2]/nav//ul//a[@href='ai.html']");
     private By yesButton = By.xpath("/html//div[@id='webhelp-root']/div/div[2]/div//article//div[@class='wt-col-inline']/button[1]");
     private By wasPageHelpful = By.xpath("/html//div[@id='webhelp-root']/div/div[2]//article//div[.='Was this page helpful?']");
-    private By thanksForFeedback = By.xpath("//p[@class='feedback__text']");
+    //private By thanksForFeedback = By.xpath("//p[@class='feedback__text']");
+    private By thanksForFeedback = By.cssSelector("[data-test='feedback-left'] .feedback__text");
 
     //below methods for interactions with the page are defined. Page methods return data instead of asserting
     // so tests control validation and remain flexible and reusable
@@ -93,8 +93,11 @@ public class SeleniumDocsPage extends BasePage {
         js.executeScript("arguments[0].scrollIntoView(true);", element);
         element.click();
     }
-    public String verifyVotedYes(){
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(thanksForFeedback));
-        return element.getText();
+
+    public String voteOptionDisappearAfterVote(){
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(thanksForFeedback, "Thanks for your feedback!"));
+        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(thanksForFeedback));
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
+        return element.getText().trim();
     }
 }

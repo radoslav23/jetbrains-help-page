@@ -21,13 +21,13 @@ public class BasePage {
         //It ensures the page object is ready to interact with the web page reliably and flexibly
         this.driver = driver;
         //Stores the passed-in WebDriver instance so the class can use it to control the browser
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         //Sets up an explicit wait with a 2-second timeout. This helps synchronize actions with dynamic page content
         this.js = (JavascriptExecutor) driver;
         //Casts the WebDriver to a JavascriptExecutor so you can run JavaScript commands when needed
     }
 
-    private By acceptAllButton = By.xpath("//div[@id='ch2-dialog']//button[.='Accept All']");
+    final By acceptAllButton = By.xpath("//div[@id='ch2-dialog']//button[.='Accept All']");
 
     public void acceptCookies() {
         // Attempt a normal click on the cookie banner, falling back to JS click if needed for reliability

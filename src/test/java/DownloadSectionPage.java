@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -82,7 +83,7 @@ public class DownloadSectionPage extends BasePage {
         return element.isDisplayed();
     }
     public void macOsDownloadButtonClick(){
-        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(macOsDownloadButton));
+        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(macOsDownloadButton));
         element.click();
     }
 

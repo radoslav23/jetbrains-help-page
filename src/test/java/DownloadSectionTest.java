@@ -1,5 +1,3 @@
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -7,33 +5,19 @@ import org.testng.annotations.*;
 public class DownloadSectionTest extends BaseTest {
 
     DownloadSectionPage page;
-
     private static final String baseUrl = "https://www.jetbrains.com/help/idea/getting-started.html";
-    @BeforeTest
+
+    @BeforeMethod
     public void initPage() {
-        driver = new ChromeDriver();
         driver.get(baseUrl);
         driverReady = true;
         page = new DownloadSectionPage(driver);
-    }
-
-    @AfterTest
-    public void teardown() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
-
-    @BeforeMethod
-    public void setUpDownloadPage() {
         page.acceptCookies();
         page.clickGetIntellijIdeaButton();
     }
 
-
     @Test
     public void navigateIntelliJDownloadPage() {
-        Assert.assertEquals(page.getCurrentUrl(), "https://www.jetbrains.com/idea/download/?section=windows");
         Assert.assertTrue(page.prisingButtonDisplayed());
         Assert.assertTrue(page.downloadButtonDisplayed());
         Assert.assertTrue(page.leadingIdeHeadingVisibility());
@@ -41,6 +25,10 @@ public class DownloadSectionTest extends BaseTest {
 
     @Test
     public void exploreWindowsDownloadOptions() {
+        Assert.assertEquals(
+                page.getCurrentUrl(),
+                "https://www.jetbrains.com/idea/download/?section=windows"
+        );
         page.clickWindowsDownloadDropdown();
         Assert.assertTrue(page.windowsZipVisibility());
         Assert.assertTrue(page.windowsExeVisibility());
@@ -50,6 +38,10 @@ public class DownloadSectionTest extends BaseTest {
     @Test
     public void clickMacOsDownloadDropdown() {
         page.clickMacOsButton();
+        Assert.assertEquals(
+                page.getCurrentUrl(),
+                "https://www.jetbrains.com/idea/download/?section=mac"
+        );
         Assert.assertTrue(page.macOsDownloadButtonVisible());
         page.macOsDownloadButtonClick();
         Assert.assertTrue(page.dmgAppleSiliconVisibility());
@@ -59,6 +51,10 @@ public class DownloadSectionTest extends BaseTest {
     @Test
     public void clickLinuxDownloadDropdown() {
         page.clickLinuxButton();
+        Assert.assertEquals(
+                page.getCurrentUrl(),
+                "https://www.jetbrains.com/idea/download/?section=linux"
+        );
         Assert.assertTrue(page.linuxDownloadButtonVisible());
         page.linuxDownloadButtonClick();
         Assert.assertTrue(page.tarLinuxVisibility());
