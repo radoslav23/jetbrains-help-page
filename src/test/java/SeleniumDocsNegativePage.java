@@ -13,8 +13,7 @@ public class SeleniumDocsNegativePage extends BasePage {
     private By slowElement = By.id("slowElement");
     private By searchField = By.xpath("//input[@placeholder='Ctrl+K for advanced search']");
     private By noSearchResults = By.xpath("//h3[@class='quick-search__no-results-text']");
-    private By noButton = By.xpath("/html//div[@id='webhelp-root']/div/div[2]/div//article//div[@class='wt-col-inline']/button[2]");
-    private By feedbackForm = By.cssSelector("div[data-test='feedback-popup']");
+    private By noButton = By.xpath("//button[normalize-space()='No']");
     private By howToImproveHeading = By.xpath("/html/body[@class='app-is-rendered']//form//legend[@class='feedback__legend']");
     private By textField = By.cssSelector("textarea[data-test-id='feedback-textarea']");
     private By nameField = By.xpath("//input[@placeholder='Name']");
@@ -52,16 +51,21 @@ public class SeleniumDocsNegativePage extends BasePage {
         }
     }
 
+//    public void clickFeedbackPanel(){
+//        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(feedbackForm));
+//        element.click();
+//    }
+
     public void voteWithNegative(){
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(noButton));
         js.executeScript("arguments[0].scrollIntoView()", element);
         element.click();
     }
 
-    public boolean feedbackFormVisibility(){
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(feedbackForm));
-        return element.isDisplayed();
-    }
+//    public boolean feedbackFormVisibility(){
+//        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(feedbackForm));
+//        return element.isDisplayed();
+//    }
 
     public String feedbackFormHeading() {
         WebElement element =  wait.until(ExpectedConditions.visibilityOfElementLocated(howToImproveHeading));
@@ -123,9 +127,9 @@ public class SeleniumDocsNegativePage extends BasePage {
         element.click();
     }
 
-    public boolean feedbackFormInvisibility(){
-        return wait.until(ExpectedConditions.invisibilityOfElementLocated(feedbackForm));
-    }
+//    public boolean feedbackFormInvisibility(){
+//        return wait.until(ExpectedConditions.invisibilityOfElementLocated(feedbackForm));
+//    }
 
     public void typeInvalidEmail(){
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(emailField));
@@ -135,5 +139,15 @@ public class SeleniumDocsNegativePage extends BasePage {
     public boolean isTheEmailInvalid(){
         wait.until(ExpectedConditions.attributeToBe(emailField, "aria-invalid", "true"));
         return true;
+    }
+
+    public void typeName(){
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(nameField));
+        element.sendKeys("John Doe");
+    }
+
+    public void typeEmail(){
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(emailField));
+        element.sendKeys("doe54jign56565@gmail.com");
     }
 }

@@ -6,6 +6,8 @@ import org.testng.annotations.*;
 public class SeleniumDocsNegativeTest extends BaseTest{
 
     SeleniumDocsNegativePage page;
+    CommonComponents component;
+
     private static final String baseUrl = "https://www.jetbrains.com/help/idea/getting-started.html";
     private static final String brokenUrl = "https://www.jetbrains.com/help/idea/non-existent-page.html";
 
@@ -14,6 +16,7 @@ public class SeleniumDocsNegativeTest extends BaseTest{
         driver.get(baseUrl);
         driverReady = true;
         page = new SeleniumDocsNegativePage(driver);
+        component = new CommonComponents(driver);
         page.acceptCookies();
     }
 
@@ -47,8 +50,9 @@ public class SeleniumDocsNegativeTest extends BaseTest{
     // The button’s enabled state is unreliable in CI due to delayed DOM updates.
     // Works locally but excluded from CI to avoid false failures.
     public void voteNegativeFeedback () {
+        component.clickFeedbackPanel();
         page.voteWithNegative();
-        Assert.assertTrue(page.feedbackFormVisibility(), "Feedback form was not visible");
+        Assert.assertTrue(component.feedbackFormVisibility(), "Feedback form was not visible");
         Assert.assertEquals(page.feedbackFormHeading(), "How can we improve?");
         Assert.assertTrue(page.textFieldDisplayed(), "Text field was not displayed");
         Assert.assertEquals(page.textFieldPlaceholderDisplayed(), "Tell us what you think would make this page better");
@@ -59,17 +63,16 @@ public class SeleniumDocsNegativeTest extends BaseTest{
         Assert.assertTrue(page.submitButtonDisplayed(), "Submit button was not displayed");
         Assert.assertTrue(page.submitButtonDisabled(), "Submit button was not disabled");
         page.typeFeedback();
+        page.typeName();
+        page.typeEmail();
         Assert.assertTrue(page.submitButtonEnabled(), "Submit button was not enabled");
         page.submitFeedback();
-        Assert.assertTrue(page.feedbackFormInvisibility(), "Feedback form still visible when shouldn't");
-        System.out.println("CI? " + System.getenv("GITHUB_ACTIONS"));
-        System.out.println("Window size: " + driver.manage().window().getSize());
-        System.out.println("Chrome version: " + ((HasCapabilities) driver).getCapabilities().getBrowserVersion());
-        System.out.println("Headless: " + ((HasCapabilities) driver).getCapabilities().is("headless"));
+        Assert.assertTrue(component.feedbackFormInvisibility(), "Feedback form still visible when shouldn't");
     }
 
     @Test
     public void typeInvalidEmail () {
+        component.clickFeedbackPanel();
         page.voteWithNegative();
         page.typeInvalidEmail();
         Assert.assertTrue(page.isTheEmailInvalid());

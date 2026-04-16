@@ -8,6 +8,8 @@ import java.net.MalformedURLException;
 public class SeleniumDocsTest extends BaseTest{
 
     SeleniumDocsPage page;
+    CommonComponents component;
+
     private static final String baseUrl = "https://www.jetbrains.com/help/idea/getting-started.html";
 
     @BeforeMethod
@@ -15,6 +17,7 @@ public class SeleniumDocsTest extends BaseTest{
         driver.get(baseUrl);
         driverReady = true;
         page = new SeleniumDocsPage(driver);
+        component = new CommonComponents(driver);
         page.acceptCookies();
     }
 
@@ -45,12 +48,9 @@ public class SeleniumDocsTest extends BaseTest{
     // The test is reliable locally but excluded from CI to avoid pipeline noise.
     public void votePositiveFeedback () {
         page.clickAiSection();
+        component.clickFeedbackPanel();
         Assert.assertEquals(page.verifyWasPageHelpfulHeading(), "Was this page helpful?");
         page.voteWithYes();
         Assert.assertEquals(page.voteOptionDisappearAfterVote(), "Thanks for your feedback!");
-        System.out.println("CI? " + System.getenv("GITHUB_ACTIONS"));
-        System.out.println("Window size: " + driver.manage().window().getSize());
-        System.out.println("Chrome version: " + ((HasCapabilities) driver).getCapabilities().getBrowserVersion());
-        System.out.println("Headless: " + ((HasCapabilities) driver).getCapabilities().is("headless"));
     }
 }

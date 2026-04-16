@@ -4,6 +4,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
@@ -19,6 +20,7 @@ public class BaseTest {
     // while keeping them hidden from tests and external classes.
     protected WebDriver driver;
     protected boolean driverReady = false;
+    protected CommonComponents component;
 
     @BeforeClass
     public void setUpClass() {

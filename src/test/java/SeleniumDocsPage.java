@@ -20,9 +20,8 @@ public class SeleniumDocsPage extends BasePage {
     private By searchResult = By.partialLinkText("Debug tool window");
     private By debugToolHeading = By.cssSelector("h1#Debug_Tool_Window\\.topic > .title__content");
     private By aiSection = By.xpath("/html//div[@id='webhelp-root']/div/div[2]/nav//ul//a[@href='ai.html']");
-    private By yesButton = By.xpath("/html//div[@id='webhelp-root']/div/div[2]/div//article//div[@class='wt-col-inline']/button[1]");
-    private By wasPageHelpful = By.xpath("/html//div[@id='webhelp-root']/div/div[2]//article//div[.='Was this page helpful?']");
-    //private By thanksForFeedback = By.xpath("//p[@class='feedback__text']");
+    private By yesButton = By.xpath("//button[normalize-space()='Yes']");
+    private By wasPageHelpful = By.xpath("//div[@class='wt-col-inline feedback__text']");
     private By thanksForFeedback = By.cssSelector("[data-test='feedback-left'] .feedback__text");
 
     //below methods for interactions with the page are defined. Page methods return data instead of asserting
@@ -90,7 +89,7 @@ public class SeleniumDocsPage extends BasePage {
 
     public void voteWithYes(){
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(yesButton));
-        js.executeScript("arguments[0].scrollIntoView(true);", element);
+        //js.executeScript("arguments[0].scrollIntoView(true);", element);
         element.click();
     }
 
