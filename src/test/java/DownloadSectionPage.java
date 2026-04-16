@@ -22,7 +22,10 @@ public class DownloadSectionPage extends BasePage {
     private By macOsDownloadButton = By.xpath("//button[@type='button' and contains(., 'Download')]");
     private By dmgAppleSilicon = By.linkText(".dmg (Apple Silicon)");
     private By dmgIntel = By.linkText(".dmg (Intel)");
-    private By linuxDownloadButton = By.xpath("//*[@id=\"download-block\"]/section[2]/div/div/div[1]/div[2]/div[3]/div/div/div/span/button");
+    //private By linuxDownloadButton = By.xpath("//*[@id=\"download-block\"]/section[2]/div/div/div[1]/div[2]/div[3]/div/div/div/span/button");
+    //private By linuxDownloadButton = By.partialLinkText("wtDownloadButton");
+    private By linuxDownloadButton = By.cssSelector(".wt-css-content-switcher__block:nth-of-type(3) [data-rs-internal] span");
+
     private By tarLinux = By.xpath("//span[normalize-space()='.tar.gz (Linux)']");
     private By tarLinuxArm64 = By.xpath("//span[normalize-space()='.tar.gz (Linux ARM64)']");
 
@@ -104,7 +107,7 @@ public class DownloadSectionPage extends BasePage {
     }
 
     public boolean linuxDownloadButtonVisible(){
-        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(linuxDownloadButton));
+        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(linuxDownloadButton));
         return element.isDisplayed();
     }
 

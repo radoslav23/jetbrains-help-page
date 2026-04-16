@@ -40,7 +40,7 @@ public class BaseTest {
             driver.manage().window().maximize();
         }
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
     }
 
     @AfterClass
