@@ -51,21 +51,11 @@ public class SeleniumDocsNegativePage extends BasePage {
         }
     }
 
-//    public void clickFeedbackPanel(){
-//        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(feedbackForm));
-//        element.click();
-//    }
-
     public void voteWithNegative(){
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(noButton));
         js.executeScript("arguments[0].scrollIntoView()", element);
         element.click();
     }
-
-//    public boolean feedbackFormVisibility(){
-//        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(feedbackForm));
-//        return element.isDisplayed();
-//    }
 
     public String feedbackFormHeading() {
         WebElement element =  wait.until(ExpectedConditions.visibilityOfElementLocated(howToImproveHeading));
@@ -118,21 +108,13 @@ public class SeleniumDocsNegativePage extends BasePage {
 
     public boolean submitButtonEnabled(){
         WebElement element =  wait.until(ExpectedConditions.visibilityOfElementLocated(submitButton));
-        //System.out.println("Button classes: " + element.getAttribute("class"));
-        //return !element.getAttribute("class").contains("button_disabled");
         return element.getAttribute("disabled") == null;
-        //return element.isEnabled();
-
     }
 
     public void submitFeedback(){
         WebElement element =  wait.until(ExpectedConditions.visibilityOfElementLocated(submitButton));
         element.click();
     }
-
-//    public boolean feedbackFormInvisibility(){
-//        return wait.until(ExpectedConditions.invisibilityOfElementLocated(feedbackForm));
-//    }
 
     public void typeInvalidEmail(){
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(emailField));

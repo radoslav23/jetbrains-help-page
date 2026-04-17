@@ -89,7 +89,6 @@ public class SeleniumDocsPage extends BasePage {
 
     public void voteWithYes(){
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(yesButton));
-        //js.executeScript("arguments[0].scrollIntoView(true);", element);
         element.click();
     }
 
