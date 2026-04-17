@@ -118,8 +118,11 @@ public class SeleniumDocsNegativePage extends BasePage {
 
     public boolean submitButtonEnabled(){
         WebElement element =  wait.until(ExpectedConditions.visibilityOfElementLocated(submitButton));
-        System.out.println("Button classes: " + element.getAttribute("class"));
-        return !element.getAttribute("class").contains("button_disabled");
+        //System.out.println("Button classes: " + element.getAttribute("class"));
+        //return !element.getAttribute("class").contains("button_disabled");
+        //return element.getAttribute("disabled") == null;
+        return element.isEnabled();
+
     }
 
     public void submitFeedback(){
