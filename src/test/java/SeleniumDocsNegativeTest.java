@@ -46,7 +46,7 @@ public class SeleniumDocsNegativeTest extends BaseTest{
         Assert.assertFalse(page.isSlowElementVisible(), "Slow element should not appear");
     }
 
-    @Test(groups = "local-only")
+    @Test
     // The button’s enabled state is unreliable in CI due to delayed DOM updates.
     // Works locally but excluded from CI to avoid false failures.
     public void voteNegativeFeedback () {
