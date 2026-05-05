@@ -17,8 +17,8 @@ public class SeleniumDocsNegativePage extends BasePage {
     private By howToImproveHeading = By.xpath("/html/body[@class='app-is-rendered']//form//legend[@class='feedback__legend']");
     private By textField = By.cssSelector("textarea[data-test-id='feedback-textarea']");
     private By nameField = By.xpath("//input[@placeholder='Name']");
-    private By emailField = By.xpath("//input[@placeholder='Email address']");
-    private By submitButton = By.cssSelector("button[data-test='feedback-send']");
+    private By emailField = By.xpath("//input[@placeholder='Email address (optional)']");
+    private By sendFeedbackButton = By.cssSelector("button[data-test='feedback-send']");
 
     //below methods for interactions with the page are defined. Page methods return data instead of asserting
     // so tests control validation and remain flexible and reusable
@@ -92,12 +92,12 @@ public class SeleniumDocsNegativePage extends BasePage {
     }
 
     public boolean submitButtonDisplayed(){
-        WebElement element =  wait.until(ExpectedConditions.visibilityOfElementLocated(submitButton));
+        WebElement element =  wait.until(ExpectedConditions.visibilityOfElementLocated(sendFeedbackButton));
         return element.isDisplayed();
     }
 
     public boolean submitButtonDisabled(){
-        WebElement element =  wait.until(ExpectedConditions.visibilityOfElementLocated(submitButton));
+        WebElement element =  wait.until(ExpectedConditions.visibilityOfElementLocated(sendFeedbackButton));
         return element.getAttribute("class").contains("button_disabled");
     }
 
@@ -107,12 +107,12 @@ public class SeleniumDocsNegativePage extends BasePage {
     }
 
     public boolean submitButtonEnabled(){
-        WebElement element =  wait.until(ExpectedConditions.visibilityOfElementLocated(submitButton));
+        WebElement element =  wait.until(ExpectedConditions.visibilityOfElementLocated(sendFeedbackButton));
         return element.getAttribute("disabled") == null;
     }
 
     public void submitFeedback(){
-        WebElement element =  wait.until(ExpectedConditions.visibilityOfElementLocated(submitButton));
+        WebElement element =  wait.until(ExpectedConditions.visibilityOfElementLocated(sendFeedbackButton));
         element.click();
     }
 
