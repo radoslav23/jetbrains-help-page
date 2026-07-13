@@ -12,7 +12,7 @@ public class DownloadSectionPage extends BasePage {
     private By getIntellijIdeaButton = By.xpath("/html//div[@id='webhelp-root']/div//a[@href='https://www.jetbrains.com/idea/download/']");
     private By pricingButton = By.xpath("/html//div[@id='js-menu-second-desktop']//a[@href='/idea/buy/']/span[@class='_content_10h2pj3_207']");
     private By downloadButton = By.xpath("/html//div[@id='js-menu-second-desktop']//a[@href='/idea/download/']/span[@class='_content_10h2pj3_207']");
-    private By intelliJHeading = By.xpath("//p[@class='_rs-subtitle-2_1owszn1_1 _rs-text_hardness_auto_1owszn1_1 wt-offset-top-12']");
+    private By intelliJHeading = By.xpath("//p[contains(text(), 'The Leading IDE for Professional Development in Java and Kotlin')]");
     private By macOsButton = By.xpath("//div[@id='download-block']/section[1]//div[@class='_scrollable_171fxw9_23']/div/button[2]/div[.='macOS']");
     private By linuxButton = By.xpath("//div[@id='download-block']/section[1]//div[@class='_scrollable_171fxw9_23']/div/button[3]/div[.='Linux']");
     private By windowsDownloadDropdown = By.xpath("//span[@title='.exe (Windows)']");
