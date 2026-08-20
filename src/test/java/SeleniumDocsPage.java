@@ -21,8 +21,12 @@ public class SeleniumDocsPage extends BasePage {
     private By debugToolHeading = By.cssSelector("h1#Debug_Tool_Window\\.topic > .title__content");
     private By aiSection = By.xpath("//a[@class='toc-item toc-item--selected toc-item--highlighted toc-item--theme-light']");
     private By yesButton = By.xpath("//button[normalize-space()='Yes']");
-    private By wasPageHelpful = By.xpath("//div[@class='wt-col-inline feedback__text']");
-    private By thanksForFeedback = By.cssSelector("[data-test='feedback-left'] .feedback__text");
+    //private By wasPageHelpful = By.xpath("//div[@class='wt-col-inline feedback__text']");
+    private By wasPageHelpful = By.xpath("//h2[contains(text(), 'Was this page helpful')]");
+
+    //private By thanksForFeedback = By.cssSelector("[data-test='feedback-left'] .feedback__text");
+    private By thanksForFeedback = By.xpath("//*[contains(text(), 'Thanks for your response')]");
+
 
     //below methods for interactions with the page are defined. Page methods return data instead of asserting
     // so tests control validation and remain flexible and reusable
@@ -93,7 +97,7 @@ public class SeleniumDocsPage extends BasePage {
     }
 
     public String voteOptionDisappearAfterVote(){
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(thanksForFeedback, "Thanks for your feedback!"));
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(thanksForFeedback, "Thanks for your response!"));
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(thanksForFeedback));
         js.executeScript("arguments[0].scrollIntoView(true);", element);
         return element.getText().trim();

@@ -51,6 +51,6 @@ public class SeleniumDocsTest extends BaseTest{
         component.clickFeedbackPanel();
         Assert.assertEquals(page.verifyWasPageHelpfulHeading(), "Was this page helpful?");
         page.voteWithYes();
-        Assert.assertEquals(page.voteOptionDisappearAfterVote(), "Thanks for your feedback!");
+        Assert.assertEquals(page.voteOptionDisappearAfterVote(), "Thanks for your response!");
     }
 }
