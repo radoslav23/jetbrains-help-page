@@ -44,8 +44,6 @@ public class SeleniumDocsTest extends BaseTest{
     }
 
     @Test
-    // JetBrains’ feedback widget renders unpredictably in CI, causing false failures.
-    // The test is reliable locally but excluded from CI to avoid pipeline noise.
     public void votePositiveFeedback () {
         page.clickAiSection();
         component.clickFeedbackPanel();

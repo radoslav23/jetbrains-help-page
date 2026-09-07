@@ -19,14 +19,10 @@ public class SeleniumDocsPage extends BasePage {
     private By searchField = By.xpath("//input[@placeholder='Ctrl+K for advanced search']");
     private By searchResult = By.partialLinkText("Debug tool window");
     private By debugToolHeading = By.cssSelector("h1#Debug_Tool_Window\\.topic > .title__content");
-    private By aiSection = By.xpath("//a[@class='toc-item toc-item--selected toc-item--highlighted toc-item--theme-light']");
+    private By aiSection = By.cssSelector("a[href='ai.html']");
     private By yesButton = By.xpath("//button[normalize-space()='Yes']");
-    //private By wasPageHelpful = By.xpath("//div[@class='wt-col-inline feedback__text']");
     private By wasPageHelpful = By.xpath("//h2[contains(text(), 'Was this page helpful')]");
-
-    //private By thanksForFeedback = By.cssSelector("[data-test='feedback-left'] .feedback__text");
     private By thanksForFeedback = By.xpath("//*[contains(text(), 'Thanks for your response')]");
-
 
     //below methods for interactions with the page are defined. Page methods return data instead of asserting
     // so tests control validation and remain flexible and reusable
