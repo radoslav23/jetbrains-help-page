@@ -40,15 +40,10 @@ public class SeleniumDocsPage extends BasePage {
 
     //This method scrolls to the element, and returns its text
     public String verifyAddElementsText() {
-        // Wait for the heading to appear in the NEW DOM
-        wait.until(ExpectedConditions.presenceOfElementLocated(addElementHeading));
-        // Always fetch a fresh reference before interacting
-        WebElement fresh = driver.findElement(addElementHeading);
-        js.executeScript("arguments[0].scrollIntoView(true);", fresh);
-        // Fetch another fresh reference before reading text
-        return driver.findElement(addElementHeading).getText();
+        return (String) js.executeScript(
+                "return document.evaluate(\"//span[normalize-space()='Add elements to code']\", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue?.innerText;"
+        );
     }
-
 
     public void clickJUnit() {
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(jUnitLink));
