@@ -40,9 +40,14 @@ public class SeleniumDocsPage extends BasePage {
 
     //This method scrolls to the element, and returns its text
     public String verifyAddElementsText() {
-        return (String) js.executeScript(
-                "return document.evaluate(\"//span[normalize-space()='Add elements to code']\", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue?.innerText;"
+        // Wait for hydration to finish
+        wait.until(ExpectedConditions.presenceOfElementLocated(addElementHeading));
+        // Scroll using JS + XPath (no WebElement passed)
+        js.executeScript(
+                "document.evaluate(\"//span[normalize-space()='Add elements to code']\", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.scrollIntoView(true);"
         );
+        // Read text using a fresh reference
+        return driver.findElement(addElementHeading).getText();
     }
 
     public void clickJUnit() {
