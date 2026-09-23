@@ -18,7 +18,7 @@ public class DownloadSectionTest extends BaseTest {
 
     @Test
     public void navigateIntelliJDownloadPage() {
-        Assert.assertTrue(page.prisingButtonDisplayed());
+        Assert.assertTrue(page.pricingButtonDisplayed());
         Assert.assertTrue(page.downloadButtonDisplayed());
         Assert.assertTrue(page.leadingIdeHeadingVisibility());
     }

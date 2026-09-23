@@ -10,11 +10,11 @@ public class DownloadSectionPage extends BasePage {
 
     // Locators are private to enforce encapsulation and prevent tests from accessing elements directly
     private By getIntellijIdeaButton = By.xpath("/html//div[@id='webhelp-root']/div//a[@href='https://www.jetbrains.com/idea/download/']");
-    private By pricingButton = By.xpath("/html//div[@id='js-menu-second-desktop']//a[@href='/idea/buy/']/span[@class='_content_10h2pj3_207']");
-    private By downloadButton = By.xpath("/html//div[@id='js-menu-second-desktop']//a[@href='/idea/download/']/span[@class='_content_10h2pj3_207']");
+    private By pricingButton = By.xpath("//a[@class='_main_xhkdfz_62 _modeOutline_xhkdfz_42 _sizeM_xhkdfz_26 _alignIconLeft_xhkdfz_49 _dark_xhkdfz_9 menu-second__button menu-item']//span[@class='_content_xhkdfz_207'][normalize-space()='Pricing']");
+    private By downloadButton = By.xpath("//a[@class='_main_xhkdfz_62 _modeClassic_xhkdfz_33 _sizeM_xhkdfz_26 _alignIconLeft_xhkdfz_49 _dark_xhkdfz_9 menu-second__button menu-item menu-second__download-button idea-second-menu-download-button']//span[@class='_content_xhkdfz_207'][normalize-space()='Download']");
     private By intelliJHeading = By.xpath("//p[contains(text(), 'The Leading IDE for Professional Development in Java and Kotlin')]");
-    private By macOsButton = By.xpath("//div[@id='download-block']/section[1]//div[@class='_scrollable_171fxw9_23']/div/button[2]/div[.='macOS']");
-    private By linuxButton = By.xpath("//div[@id='download-block']/section[1]//div[@class='_scrollable_171fxw9_23']/div/button[3]/div[.='Linux']");
+    private By macOsButton = By.xpath("//button[@role='tab' and .//div[normalize-space()='macOS']]");
+    private By linuxButton = By.xpath("//button[@role='tab' and .//div[normalize-space()='Linux']]");
     private By windowsDownloadDropdown = By.xpath("//span[@title='.exe (Windows)']");
     private By windowsZip = By.linkText(".zip (Windows)");
     private By windowsExe = By.linkText(".exe (Windows)");
@@ -38,8 +38,9 @@ public class DownloadSectionPage extends BasePage {
         return currentUrl;
     }
 
-    public boolean prisingButtonDisplayed(){
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(pricingButton));
+    public boolean pricingButtonDisplayed() {
+        WebElement element = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(pricingButton));
         return element.isDisplayed();
     }
 
