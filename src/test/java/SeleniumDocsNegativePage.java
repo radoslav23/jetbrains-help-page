@@ -11,7 +11,6 @@ public class SeleniumDocsNegativePage extends BasePage {
     // Locators are private to enforce encapsulation and prevent tests from accessing elements directly
     private By cookieBanner = By.id("cookie-banner");
     private By slowElement = By.id("slowElement");
-    private By searchField = By.xpath("//input[@placeholder='Ctrl+K for advanced search']");
     private By noSearchResults = By.xpath("//h3[@class='quick-search__no-results-text']");
     private By noButton = By.xpath("//button[normalize-space()='No']");
     private By howToImproveHeading = By.xpath("/html/body[@class='app-is-rendered']//form//legend[@class='feedback__legend']");
@@ -24,11 +23,6 @@ public class SeleniumDocsNegativePage extends BasePage {
     // so tests control validation and remain flexible and reusable
     public String getPageTitle() {
         return driver.getTitle();
-    }
-
-    public void typeInvalidKeyword() {
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(searchField));
-        element.sendKeys("!@#$%^&*()_+");
     }
 
     public String noResultForInvalidKeyword(){

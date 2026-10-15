@@ -10,6 +10,7 @@ public class CommonComponents extends BasePage{
     }
 
     private By feedbackForm = By.xpath("//span[@class='feedback-side-panel__trigger-text']");
+    private By searchField = By.xpath("//input[@placeholder='Press [Enter] for advanced search']");
 
     public void clickFeedbackPanel(){
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(feedbackForm));
@@ -25,4 +26,13 @@ public class CommonComponents extends BasePage{
         return wait.until(ExpectedConditions.invisibilityOfElementLocated(feedbackForm));
     }
 
+    public void typeInvalidKeyword() {
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(searchField));
+        element.sendKeys("!@#$%^&*()_+");
+    }
+
+    public void typeKeyword() {
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(searchField));
+        element.sendKeys("Debug tool window");
+    }
 }

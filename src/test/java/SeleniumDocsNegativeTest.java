@@ -31,7 +31,7 @@ public class SeleniumDocsNegativeTest extends BaseTest{
     public void testInvalidSearchInput() {
         SeleniumDocsPage docsPage = new SeleniumDocsPage(driver);
         docsPage.clickSearchIcon();
-        page.typeInvalidKeyword();
+        component.typeInvalidKeyword();
         Assert.assertTrue(page.noResultForInvalidKeyword().contains("We’re sorry! We couldn’t find results"),
                 "Expected 'no results' message");
     }

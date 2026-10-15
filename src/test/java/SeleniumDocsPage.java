@@ -15,8 +15,7 @@ public class SeleniumDocsPage extends BasePage {
     private By addElementHeading = By.xpath("//span[normalize-space()='Add elements to code']");
     private By jUnitLink = By.xpath("//h3[normalize-space()='JUnit']");
     private By getStartedJUnit = By.xpath("//span[contains(text(),'Get started with JUnit')]");
-    private By searchIcon = By.xpath("//button[@title='Search']//*[name()='svg']");
-    private By searchField = By.xpath("//input[@placeholder='Ctrl+K for advanced search']");
+    private By searchIcon = By.xpath("//input[@data-test-id='search-input']");
     private By searchResult = By.partialLinkText("Debug tool window");
     private By debugToolHeading = By.cssSelector("h1#Debug_Tool_Window\\.topic > .title__content");
     private By aiSection = By.cssSelector("a[href='ai.html']");
@@ -64,11 +63,6 @@ public class SeleniumDocsPage extends BasePage {
     public void clickSearchIcon() {
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(searchIcon));
         element.click();
-    }
-
-    public void typeKeyword() {
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(searchField));
-        element.sendKeys("Debug tool window");
     }
 
     public void clickSearchResult() {

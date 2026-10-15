@@ -38,7 +38,7 @@ public class SeleniumDocsTest extends BaseTest{
     @Test
     public void searchForKeyword () throws MalformedURLException {
         page.clickSearchIcon();
-        page.typeKeyword();
+        component.typeKeyword();
         page.clickSearchResult();
         Assert.assertEquals(page.verifyDebugToolText(), "Debug tool window", "Heading text mismatch");
     }
