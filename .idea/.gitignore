@@ -4,6 +4,7 @@
 
 # Screenshots
 screenshots/
+*.png
 
 # Extent Reports
 extent-report.html
