@@ -12,7 +12,7 @@ public class DownloadSectionPage extends BasePage {
     private By getIntellijIdeaButton = By.xpath("/html//div[@id='webhelp-root']/div//a[@href='https://www.jetbrains.com/idea/download/']");
     private By pricingButton = By.xpath("//a[@class='_main_xhkdfz_62 _modeOutline_xhkdfz_42 _sizeM_xhkdfz_26 _alignIconLeft_xhkdfz_49 _dark_xhkdfz_9 menu-second__button menu-item']//span[@class='_content_xhkdfz_207'][normalize-space()='Pricing']");
     private By downloadButton = By.xpath("//a[@class='_main_xhkdfz_62 _modeClassic_xhkdfz_33 _sizeM_xhkdfz_26 _alignIconLeft_xhkdfz_49 _dark_xhkdfz_9 menu-second__button menu-item menu-second__download-button idea-second-menu-download-button']//span[@class='_content_xhkdfz_207'][normalize-space()='Download']");
-    private By intelliJHeading = By.xpath("//p[contains(text(), 'The Leading IDE for Professional Development in Java and Kotlin')]");
+    private By intelliJHeading = By.xpath("//p[contains(text(), 'The Java and Kotlin IDE for you and your agents')]");
     private By macOsButton = By.xpath("//button[@role='tab' and .//div[normalize-space()='macOS']]");
     private By linuxButton = By.xpath("//button[@role='tab' and .//div[normalize-space()='Linux']]");
     private By windowsDownloadDropdown = By.xpath("//span[@title='.exe (Windows)']");
