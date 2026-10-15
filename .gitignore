@@ -50,3 +50,5 @@ test-output/
 # Allure
 allure-results/
 allure-report/
+
+.idea/workspace.xml
