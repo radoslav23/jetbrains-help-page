@@ -36,3 +36,17 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+# Screenshots
+screenshots/
+*.png
+
+# Extent Reports
+extent-report.html
+
+# TestNG
+test-output/
+
+# Allure
+allure-results/
+allure-report/
