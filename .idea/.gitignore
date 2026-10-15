@@ -1,12 +1,31 @@
-# Default ignored files
-/shelf/
-/workspace.xml
-# Editor-based HTTP Client requests
-/httpRequests/
-# Datasource local storage ignored files
-/dataSources/
-/dataSources.local.xml
-# Zencoder local files
-/zencoder
-/zencoder-chat-index.xml
-/zencoder-chats-dedicated.xml
+# IntelliJ
+.idea/
+*.iml
+
+# Screenshots
+screenshots/
+
+# Extent Reports
+extent-report.html
+
+# TestNG reports
+test-output/
+
+# Allure
+allure-results/
+allure-report/
+
+# Maven
+target/
+
+# IntelliJ HTTP Client
+httpRequests/
+
+# Data sources
+dataSources/
+dataSources.local.xml
+
+# Zencoder
+zencoder/
+zencoder-chat-index.xml
+zencoder-chats-dedicated.xml
