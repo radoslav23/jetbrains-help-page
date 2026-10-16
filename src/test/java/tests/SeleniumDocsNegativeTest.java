@@ -1,9 +1,15 @@
-import org.openqa.selenium.HasCapabilities;
+package tests;
+
+import base.BaseTest;
+import base.TestListener;
+import components.CommonComponents;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import pages.SeleniumDocsNegativePage;
+import pages.SeleniumDocsPage;
 
 @Listeners(TestListener.class)
-public class SeleniumDocsNegativeTest extends BaseTest{
+public class SeleniumDocsNegativeTest extends BaseTest {
 
     SeleniumDocsNegativePage page;
     CommonComponents component;
@@ -53,13 +59,13 @@ public class SeleniumDocsNegativeTest extends BaseTest{
         component.clickFeedbackPanel();
         page.voteWithNegative();
         Assert.assertTrue(component.feedbackFormVisibility(), "Feedback form was not visible");
-        Assert.assertEquals(page.feedbackFormHeading(), "How can we improve?");
+        Assert.assertEquals(page.feedbackFormHeading(), "Was this page helpful?");
         Assert.assertTrue(page.textFieldDisplayed(), "Text field was not displayed");
-        Assert.assertEquals(page.textFieldPlaceholderDisplayed(), "Tell us what you think would make this page better");
+        Assert.assertEquals(page.textFieldPlaceholderDisplayed(), "Type your feedback here...");
         Assert.assertTrue(page.nameFieldDisplayed(), "Name field was not displayed");
-        Assert.assertEquals(page.nameFieldPlaceholderDisplayed(), "Name");
+        Assert.assertEquals(page.nameFieldPlaceholderDisplayed(), "Name (optional)");
         Assert.assertTrue(page.emailFieldDisplayed(), "Email field was not displayed");
-        Assert.assertEquals(page.emailFieldPlaceholderDisplayed(), "Email address");
+        Assert.assertEquals(page.emailFieldPlaceholderDisplayed(), "Email (optional)");
         Assert.assertTrue(page.submitButtonDisplayed(), "Submit button was not displayed");
         Assert.assertTrue(page.submitButtonDisabled(), "Submit button was not disabled");
         page.typeFeedback();

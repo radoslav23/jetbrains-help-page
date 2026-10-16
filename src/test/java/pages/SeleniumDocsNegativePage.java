@@ -1,8 +1,8 @@
+package pages;
+
+import base.BasePage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class SeleniumDocsNegativePage extends BasePage {
 
@@ -13,11 +13,11 @@ public class SeleniumDocsNegativePage extends BasePage {
     private By slowElement = By.id("slowElement");
     private By noSearchResults = By.xpath("//h3[@class='quick-search__no-results-text']");
     private By noButton = By.xpath("//button[normalize-space()='No']");
-    private By howToImproveHeading = By.xpath("/html/body[@class='app-is-rendered']//form//legend[@class='feedback__legend']");
-    private By textField = By.cssSelector("textarea[data-test-id='feedback-textarea']");
-    private By nameField = By.xpath("//input[@placeholder='Name']");
-    private By emailField = By.cssSelector("input[data-test-id='new-feedback-email']");
-    private By sendFeedbackButton = By.cssSelector("button[data-test='feedback-send']");
+    private By feedbackTitle = By.xpath("//h2[normalize-space()='Was this page helpful?']");
+    private By textField = By.cssSelector("textarea[data-test-id='new-feedback-textarea']");
+    private By nameField = By.xpath("//input[@placeholder='Name (optional)']");
+    private By emailField = By.xpath("//input[@placeholder='Email (optional)']");
+    private By sendFeedbackButton = By.cssSelector("button[data-test='new-feedback-send']");
 
     //below methods for interactions with the page are defined. Page methods return data instead of asserting
     // so tests control validation and remain flexible and reusable
@@ -52,7 +52,7 @@ public class SeleniumDocsNegativePage extends BasePage {
     }
 
     public String feedbackFormHeading() {
-        WebElement element =  wait.until(ExpectedConditions.visibilityOfElementLocated(howToImproveHeading));
+        WebElement element =  wait.until(ExpectedConditions.visibilityOfElementLocated(feedbackTitle));
         return element.getText();
     }
     public boolean textFieldDisplayed(){
@@ -90,9 +90,11 @@ public class SeleniumDocsNegativePage extends BasePage {
         return element.isDisplayed();
     }
 
-    public boolean submitButtonDisabled(){
-        WebElement element =  wait.until(ExpectedConditions.visibilityOfElementLocated(sendFeedbackButton));
-        return element.getAttribute("class").contains("button_disabled");
+    public boolean submitButtonDisabled() {
+        WebElement element = wait.until(
+                ExpectedConditions.presenceOfElementLocated(sendFeedbackButton));
+
+        return !element.isEnabled();
     }
 
     public void typeFeedback(){

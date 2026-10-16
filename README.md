@@ -8,17 +8,17 @@ Features
 - Page Object Model (POM) for clean separation of concerns
 - Automatic screenshots on test failure (saved in /screenshots)
 - Custom TestNG Listener for failure handling
-- Reusable BaseTest and BasePage classes
+- Reusable base.BaseTest and base.BasePage classes
 - Cookie handling and navigation helpers
 - Support for multiple test classes
 
 How the Tests Work
-BaseTest
+base.BaseTest
 - Initializes WebDriver
 - Provides takeScreenshot() method
 - Handles driver lifecycle
 - Exposes driverReady flag to ensure screenshots only run when the browser is active
-  BasePage
+  base.BasePage
 - Stores driver, wait, and JavaScript executor
 - Provides shared utilities for all page objects
   Page Objects

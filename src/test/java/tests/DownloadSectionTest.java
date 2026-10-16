@@ -1,5 +1,10 @@
+package tests;
+
+import base.BaseTest;
+import base.TestListener;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import pages.DownloadSectionPage;
 
 @Listeners(TestListener.class)
 public class DownloadSectionTest extends BaseTest {

@@ -1,11 +1,16 @@
-import org.openqa.selenium.HasCapabilities;
+package tests;
+
+import base.BaseTest;
+import base.TestListener;
+import components.CommonComponents;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import pages.SeleniumDocsPage;
 
 import java.net.MalformedURLException;
 
 @Listeners(TestListener.class)
-public class SeleniumDocsTest extends BaseTest{
+public class SeleniumDocsTest extends BaseTest {
 
     SeleniumDocsPage page;
     CommonComponents component;
