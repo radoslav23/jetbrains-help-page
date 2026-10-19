@@ -45,9 +45,9 @@ public class SeleniumDocsPage extends BasePage {
         // Wait for hydration to finish
         wait.until(ExpectedConditions.presenceOfElementLocated(addElementHeading));
         // Scroll using JS + XPath (no WebElement passed)
-        js.executeScript(
-                "document.evaluate(\"//span[normalize-space()='Add elements to code']\", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.scrollIntoView(true);"
-        );
+        //js.executeScript(
+//                "document.evaluate(\"//span[normalize-space()='Add elements to code']\", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.scrollIntoView(true);"
+//        );
         // Read text using a fresh reference
         return driver.findElement(addElementHeading).getText();
     }
