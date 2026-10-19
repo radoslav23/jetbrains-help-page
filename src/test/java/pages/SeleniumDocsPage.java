@@ -36,7 +36,7 @@ public class SeleniumDocsPage extends BasePage {
     //This method performs an action and does not return a value
     public void clickSeleniumHeader(){
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(seleniumHeader));
-        js.executeScript("arguments[0].scrollIntoView(true);", element);
+        //js.executeScript("arguments[0].scrollIntoView(true);", element);
         element.click();
     }
 
