@@ -36,7 +36,6 @@ public class SeleniumDocsPage extends BasePage {
     //This method performs an action and does not return a value
     public void clickSeleniumHeader(){
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(seleniumHeader));
-        //js.executeScript("arguments[0].scrollIntoView(true);", element);
         element.click();
     }
 
@@ -44,10 +43,6 @@ public class SeleniumDocsPage extends BasePage {
     public String verifyAddElementsText() {
         // Wait for hydration to finish
         wait.until(ExpectedConditions.presenceOfElementLocated(addElementHeading));
-        // Scroll using JS + XPath (no WebElement passed)
-        //js.executeScript(
-//                "document.evaluate(\"//span[normalize-space()='Add elements to code']\", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.scrollIntoView(true);"
-//        );
         // Read text using a fresh reference
         return driver.findElement(addElementHeading).getText();
     }
