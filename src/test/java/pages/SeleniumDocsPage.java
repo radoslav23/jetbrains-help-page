@@ -39,12 +39,16 @@ public class SeleniumDocsPage extends BasePage {
         element.click();
     }
 
-    //This method scrolls to the element, and returns its text
+    //This method returns text of an element
     public String verifyAddElementsText() {
         // Wait for hydration to finish
-        wait.until(ExpectedConditions.presenceOfElementLocated(addElementHeading));
+        //wait.until(ExpectedConditions.presenceOfElementLocated(addElementHeading));
         // Read text using a fresh reference
-        return driver.findElement(addElementHeading).getText();
+        //return driver.findElement(addElementHeading).getText();
+        return wait.until(
+                        ExpectedConditions.refreshed(
+                                ExpectedConditions.visibilityOfElementLocated(addElementHeading)))
+                .getText();
     }
 
     public void clickJUnit() {

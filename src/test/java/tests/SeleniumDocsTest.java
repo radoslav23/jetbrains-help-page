@@ -27,7 +27,7 @@ public class SeleniumDocsTest extends BaseTest {
     }
 
     @Test
-    public void seleniumDocsPage () throws MalformedURLException {
+    public void seleniumDocsPage () {
         page.clickTestingLink();
         page.clickSeleniumHeader();
         Assert.assertEquals(page.verifyAddElementsText(), "Add elements to code", "Heading text mismatch");
