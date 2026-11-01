@@ -41,10 +41,6 @@ public class SeleniumDocsPage extends BasePage {
 
     //This method returns text of an element
     public String verifyAddElementsText() {
-        // Wait for hydration to finish
-        //wait.until(ExpectedConditions.presenceOfElementLocated(addElementHeading));
-        // Read text using a fresh reference
-        //return driver.findElement(addElementHeading).getText();
         return wait.until(
                         ExpectedConditions.refreshed(
                                 ExpectedConditions.visibilityOfElementLocated(addElementHeading)))
@@ -53,7 +49,6 @@ public class SeleniumDocsPage extends BasePage {
 
     public void clickJUnit() {
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(jUnitLink));
-        js.executeScript("arguments[0].scrollIntoView(true);", element);
         element.click();
     }
 
