@@ -35,8 +35,9 @@ public class SeleniumDocsPage extends BasePage {
 
     //This method performs an action and does not return a value
     public void clickSeleniumHeader(){
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(seleniumHeader));
-        element.click();
+        wait.until(
+                        ExpectedConditions.elementToBeClickable(seleniumHeader))
+                .click();
     }
 
     //This method returns text of an element

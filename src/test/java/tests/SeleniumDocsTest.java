@@ -28,9 +28,25 @@ public class SeleniumDocsTest extends BaseTest {
 
     @Test
     public void seleniumDocsPage () {
+//        page.clickTestingLink();
+//        page.clickSeleniumHeader();
+//        Assert.assertEquals(page.verifyAddElementsText(), "Add elements to code", "Heading text mismatch");
+
+        System.out.println("Click Testing");
         page.clickTestingLink();
+
+        System.out.println("Click Selenium Header");
         page.clickSeleniumHeader();
-        Assert.assertEquals(page.verifyAddElementsText(), "Add elements to code", "Heading text mismatch");
+
+        System.out.println("Verify heading");
+        String heading = page.verifyAddElementsText();
+
+        System.out.println("Heading: " + heading);
+
+        Assert.assertEquals(
+                heading,
+                "Add elements to code",
+                "Heading text mismatch");
     }
 
     @Test
