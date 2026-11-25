@@ -15,7 +15,8 @@ public class SeleniumDocsPage extends BasePage {
     // Locators are private to enforce encapsulation and prevent tests from accessing elements directly
     private By testingLink = By.xpath("//a[normalize-space()='Testing']");
     private By seleniumHeader = By.xpath("//h3[normalize-space()='Selenium']");
-    private By addElementHeading = By.xpath("//span[normalize-space()='Add elements to code']");
+    //private By addElementHeading = By.xpath("//span[normalize-space()='Add elements to code']");
+    private By addElementHeading = By.cssSelector("h2[data-toc='add_elements_to_code']");
     private By jUnitLink = By.xpath("//h3[normalize-space()='JUnit']");
     private By getStartedJUnit = By.xpath("//span[contains(text(),'Get started with JUnit')]");
     private By searchIcon = By.xpath("//input[@data-test-id='search-input']");
